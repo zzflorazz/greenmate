@@ -1,0 +1,48 @@
+{
+  "mode": "two_fresh_servers_normal_lifespan_training_disabled",
+  "artifact_hashes_unchanged": true,
+  "artifact_sha256": {
+    "attention_v1.joblib": "3b27c3580e68f57eb636b53ae838a9bb8f96ac6286bef45922412f916f83527c",
+    "attention_v1_manifest.json": "7946c07411ebf50f0acab708c20536ad628ab1135cdff7d296373893162ac10f"
+  },
+  "results": [
+    {
+      "attempt": 1,
+      "pid": 56694,
+      "prediction": {
+        "status": "ok",
+        "prediction": "NORMAL",
+        "probability": 0.1380187288040352,
+        "model_version": "attention_v1",
+        "window_start": "2026-10-21T06:30:00+00:00",
+        "window_end": "2026-10-21T09:00:00+00:00",
+        "source_type": "SIMULATED",
+        "evidence_type": "MODEL_OUTPUT",
+        "error": null,
+        "probability_of": "WATCH",
+        "horizon": 2,
+        "horizon_minutes": 60,
+        "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。"
+      }
+    },
+    {
+      "attempt": 2,
+      "pid": 56700,
+      "prediction": {
+        "status": "ok",
+        "prediction": "NORMAL",
+        "probability": 0.1380187288040352,
+        "model_version": "attention_v1",
+        "window_start": "2026-10-21T06:30:00+00:00",
+        "window_end": "2026-10-21T09:00:00+00:00",
+        "source_type": "SIMULATED",
+        "evidence_type": "MODEL_OUTPUT",
+        "error": null,
+        "probability_of": "WATCH",
+        "horizon": 2,
+        "horizon_minutes": 60,
+        "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。"
+      }
+    }
+  ]
+}

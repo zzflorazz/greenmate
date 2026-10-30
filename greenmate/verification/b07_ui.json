@@ -1,0 +1,19 @@
+{
+  "mode": "real_local_run_sh_server_and_db_with_browser_llm_weather_fixtures",
+  "checks": [
+    "four_cards_and_simulated_source_reset",
+    "sqlite_environment_history",
+    "real_local_vector_search_hits",
+    "persisted_chat_history",
+    "real_saved_model_prediction",
+    "saved_evaluation_metrics",
+    "ordinary_answer_rendering_with_fixture",
+    "agent_trace_and_evidence_badges_with_fixture",
+    "weather_error_preserves_displayed_state",
+    "llm_error_keeps_visible_tool_evidence",
+    "all_four_cards_show_chinese_offline_errors",
+    "mobile_no_horizontal_overflow"
+  ],
+  "page_errors": [],
+  "passed": true
+}

@@ -1,0 +1,79 @@
+{
+  "mode": "real_python_tools_and_saved_model_with_mocked_llm_weather_knowledge_transport",
+  "environment_samples_unchanged": true,
+  "result": {
+    "answer": "模型预测（MODEL_OUTPUT）：attention_v1基于SIMULATED规则标签，存在不确定性。天气证据：不可用。养护知识：绿萝需检查盆土；预测不能替代天气和知识。\n\n工具证据记录：\n- 第2次调用的未来12小时天气预报证据缺失（unavailable）：天气API超时（5秒），未来12小时预报证据缺失。",
+    "tool_calls": [
+      {
+        "sequence": 1,
+        "tool": "predict_next_attention",
+        "arguments": {},
+        "status": "ok",
+        "result": {
+          "status": "ok",
+          "source": "MODEL_OUTPUT",
+          "time": "2026-10-21T09:58:13.123089+00:00",
+          "data": {
+            "status": "ok",
+            "prediction": "NORMAL",
+            "probability": 0.1380187288040352,
+            "model_version": "attention_v1",
+            "window_start": "2026-10-21T06:30:00+00:00",
+            "window_end": "2026-10-21T09:00:00+00:00",
+            "source_type": "SIMULATED",
+            "evidence_type": "MODEL_OUTPUT",
+            "error": null,
+            "probability_of": "WATCH",
+            "horizon": 2,
+            "horizon_minutes": 60,
+            "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。"
+          },
+          "error": null
+        },
+        "elapsed_ms": 3.048
+      },
+      {
+        "sequence": 2,
+        "tool": "get_weather_forecast",
+        "arguments": {
+          "location": "北京"
+        },
+        "status": "unavailable",
+        "result": {
+          "status": "unavailable",
+          "source": "OPEN_METEO",
+          "time": "2026-10-21T09:58:13.124527+00:00",
+          "data": {},
+          "error": "天气API超时（5秒），未来12小时预报证据缺失。"
+        },
+        "elapsed_ms": 1.371
+      },
+      {
+        "sequence": 3,
+        "tool": "search_plant_knowledge",
+        "arguments": {
+          "query": "绿萝浇水"
+        },
+        "status": "ok",
+        "result": {
+          "status": "ok",
+          "source": "LOCAL_KNOWLEDGE",
+          "time": "2026-10-21T09:58:13.124687+00:00",
+          "data": {
+            "query": "绿萝浇水",
+            "items": [
+              {
+                "name": "绿萝",
+                "tips": "检查盆土"
+              }
+            ]
+          },
+          "error": null
+        },
+        "elapsed_ms": 0.117
+      }
+    ],
+    "iterations": 2
+  },
+  "observable_logs": "[agent.tool] {\"sequence\": 1, \"tool\": \"predict_next_attention\", \"arguments\": {}, \"status\": \"ok\", \"result\": {\"status\": \"ok\", \"source\": \"MODEL_OUTPUT\", \"time\": \"2026-10-21T09:58:13.123089+00:00\", \"data\": {\"status\": \"ok\", \"prediction\": \"NORMAL\", \"probability\": 0.1380187288040352, \"model_version\": \"attention_v1\", \"window_start\": \"2026-10-21T06:30:00+00:00\", \"window_end\": \"2026-10-21T09:00:00+00:00\", \"source_type\": \"SIMULATED\", \"evidence_type\": \"MODEL_OUTPUT\", \"error\": null, \"probability_of\": \"WATCH\", \"horizon\": 2, \"horizon_minutes\": 60, \"limitations\": \"仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。\"}, \"error\": null}, \"elapsed_ms\": 3.048}\n[weather.forecast] unavailable: 天气API超时（5秒），未来12小时预报证据缺失。\n[agent.tool] {\"sequence\": 2, \"tool\": \"get_weather_forecast\", \"arguments\": {\"location\": \"北京\"}, \"status\": \"unavailable\", \"result\": {\"status\": \"unavailable\", \"source\": \"OPEN_METEO\", \"time\": \"2026-10-21T09:58:13.124527+00:00\", \"data\": {}, \"error\": \"天气API超时（5秒），未来12小时预报证据缺失。\"}, \"elapsed_ms\": 1.371}\n[agent.tool] {\"sequence\": 3, \"tool\": \"search_plant_knowledge\", \"arguments\": {\"query\": \"绿萝浇水\"}, \"status\": \"ok\", \"result\": {\"status\": \"ok\", \"source\": \"LOCAL_KNOWLEDGE\", \"time\": \"2026-10-21T09:58:13.124687+00:00\", \"data\": {\"query\": \"绿萝浇水\", \"items\": [{\"name\": \"绿萝\", \"tips\": \"检查盆土\"}]}, \"error\": null}, \"elapsed_ms\": 0.117}\n"
+}

@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+greenmate.db
+greenmate.db-journal
+.env
+.models/
+
+.DS_Store

@@ -1,0 +1,58 @@
+// Uses bundled Playwright only; no browser dependency is added to the project.
+const {chromium,expect}=require('/Users/xiaoyi/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+(async()=>{
+ const browser=await chromium.launch({headless:true,executablePath:'/Users/xiaoyi/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell'});
+ const context=await browser.newContext({viewport:{width:1440,height:1100}});
+ const page=await context.newPage();
+ const errors=[];page.on('pageerror',error=>errors.push(error.message));
+ const report={mode:'real_local_run_sh_server_and_db_with_browser_llm_weather_fixtures',checks:[]};
+ const check=name=>report.checks.push(name);
+ try{
+ await page.goto('http://127.0.0.1:18107');await page.waitForLoadState('networkidle');
+ assert.equal(await page.locator('.workspace > section.card').count(),5);
+ await page.locator('#set-simulated').click();await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('已恢复'));
+ assert.equal(await page.locator('#temperature').textContent(),'24');
+ assert.equal(await page.locator('#humidity').textContent(),'65');
+ assert.equal(await page.locator('#light').textContent(),'12000');
+ check('original_four_capabilities_and_analysis_archive');
+ await page.locator('#environment details summary').click();await page.locator('#load-samples').click();await page.waitForFunction(()=>document.querySelector('#sample-status').textContent.includes('历史样本已加载'));
+ assert((await page.locator('#sample-history').textContent()).includes('SIMULATED'));check('sqlite_environment_history');
+ await page.locator('#knowledge-query').fill('绿萝怎么浇水');await page.locator('#search-button').click();await page.waitForFunction(()=>document.querySelector('#knowledge-status').textContent.includes('命中'));
+ assert(await page.locator('.knowledge-item').count()>0);check('real_local_vector_search_hits');
+ await page.locator('#chat-memory summary').click();await page.locator('#load-chat').click();await page.waitForFunction(()=>document.querySelector('#chat-status').textContent.includes('SQLite'));
+ assert((await page.locator('#chat-history').textContent()).includes('演示'));check('persisted_chat_history');
+ const prediction=await (await page.request.get('http://127.0.0.1:18107/api/ml/predict')).json();assert.equal(prediction.status,'ok');assert.equal(prediction.model_version,'attention_v1');
+ await page.locator('#predict-button').click();await page.waitForFunction(()=>document.querySelector('#prediction-status').textContent.includes('未重新训练'));
+ check('real_saved_model_prediction');
+ await page.locator('#prediction details summary').click();await page.locator('#load-metrics').click();await page.waitForFunction(()=>document.querySelector('#metrics-status').textContent.includes('读取已保存指标'));check('saved_evaluation_metrics');
+ await page.route('**/api/ask',route=>route.fulfill({json:{answer:'页面测试回答：模拟状态为24°C、65%、12000 lux；需要检查盆土。',source_type:'SIMULATED'}}));
+ await page.locator('#question').fill('当前绿萝需要浇水吗？');await page.locator('#ask-button').click();await page.waitForFunction(()=>document.querySelector('#answer').textContent.includes('页面测试回答'));
+ check('ordinary_answer_rendering_with_fixture');
+ await page.route('**/api/agent',route=>route.fulfill({json:{answer:'页面测试回答：MODEL_OUTPUT 预测与天气、本地知识分别取证，存在不确定性。',iterations:2,tool_calls:[{sequence:1,tool:'predict_next_attention',arguments:{},status:'ok',elapsed_ms:2,result:{status:'ok',source:'MODEL_OUTPUT',time:'2026-10-21T10:00:00Z',data:prediction,error:null}}]}}));
+ await page.locator('#example-question').click();await page.locator('#ask-button').click();await page.waitForFunction(()=>!document.querySelector('#agent-trace').hidden);
+ await page.locator('#agent-trace summary').first().click();assert((await page.locator('#agent-tool-list').textContent()).includes('predict_next_attention'));assert((await page.locator('#answer-evidence').textContent()).includes('MODEL_OUTPUT'));
+ check('agent_trace_and_evidence_badges_with_fixture');
+ await page.screenshot({path:'verification/b07_desktop.png',fullPage:true});
+ await page.route('**/api/set-source',route=>route.fulfill({status:502,json:{error:{code:'HTTP_502',message:'获取真实天气失败，现有状态未改变。',hint:'请检查网络后重试。'}}}));
+ await page.locator('#fetch-weather').click();await page.waitForFunction(()=>document.querySelector('#status').classList.contains('error'));
+ assert((await page.locator('#status').textContent()).includes('现有状态未改变'));
+ assert.equal(await page.locator('#source-type').textContent(),'SIMULATED');check('weather_error_preserves_displayed_state');
+ await page.unroute('**/api/agent');
+ await page.route('**/api/agent',route=>route.fulfill({status:502,json:{error:{code:'LLM_UNAVAILABLE',message:'模型总结暂不可用。',hint:'稍后重试，工具证据已保留。'},llm_error:{status_code:502,message:'模型总结暂不可用。'},answer:'模型总结失败。',iterations:2,tool_calls:[{sequence:1,tool:'predict_next_attention',arguments:{},status:'ok',elapsed_ms:2,result:{source:'MODEL_OUTPUT',data:prediction,status:'ok',error:null}}]}}));
+ await page.locator('#ask-button').click();await page.waitForFunction(()=>document.querySelector('#ask-status').classList.contains('error'));
+ assert(!(await page.locator('#agent-trace').isHidden()));assert((await page.locator('#agent-tool-list').textContent()).includes('predict_next_attention'));check('llm_error_keeps_visible_tool_evidence');
+ await page.unroute('**/api/ask');await context.setOffline(true);await page.locator('#refresh').click();await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('无法连接'));
+ await page.locator('#knowledge-query').fill('缺水');await page.locator('#search-button').click();await page.waitForFunction(()=>document.querySelector('#knowledge-status').textContent.includes('无法连接'));
+ await page.locator('#predict-button').click();await page.waitForFunction(()=>document.querySelector('#prediction-status').textContent.includes('无法连接'));
+ await page.locator('#mode-ask').click();await page.locator('#ask-button').click();await page.waitForFunction(()=>document.querySelector('#ask-status').textContent.includes('无法连接'));
+ check('all_four_cards_show_chinese_offline_errors');
+ await page.screenshot({path:'verification/b07_offline.png',fullPage:true});
+ await context.setOffline(false);await page.setViewportSize({width:390,height:844});await page.goto('http://127.0.0.1:18107');await page.waitForLoadState('networkidle');
+ assert(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth));check('mobile_no_horizontal_overflow');
+ await page.screenshot({path:'verification/b07_mobile.png',fullPage:true});
+ assert.deepEqual(errors,[]);report.page_errors=errors;report.passed=true;
+ }finally{fs.writeFileSync('verification/b07_ui.json',JSON.stringify(report,null,2));await browser.close();}
+ console.log(JSON.stringify(report,null,2));
+})().catch(error=>{console.error(error);process.exit(1)});

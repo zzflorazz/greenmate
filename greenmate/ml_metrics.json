@@ -1,0 +1,238 @@
+{
+  "model": {
+    "name": "LogisticRegression",
+    "max_iter": 1000,
+    "random_state": 42,
+    "scaler": "StandardScaler",
+    "threshold": 0.5,
+    "sklearn_version": "1.9.1"
+  },
+  "features": [
+    "temp_current",
+    "temp_mean",
+    "temp_delta",
+    "hum_current",
+    "hum_mean",
+    "hum_delta",
+    "light_current",
+    "light_delta"
+  ],
+  "window_config": {
+    "window_size": 6,
+    "horizon": 2,
+    "sample_interval_minutes": 30,
+    "features": [
+      "temp_current",
+      "temp_mean",
+      "temp_delta",
+      "hum_current",
+      "hum_mean",
+      "hum_delta",
+      "light_current",
+      "light_delta"
+    ],
+    "label_rules": {
+      "name": "next_window_attention",
+      "label_source": "RULE_v1",
+      "aggregation": "future_window_mean",
+      "operator": "any",
+      "temperature": {
+        "watch_gte": 32,
+        "watch_lte": 10,
+        "unit": "°C"
+      },
+      "humidity": {
+        "watch_lte": 35,
+        "watch_gte": 85,
+        "unit": "%"
+      },
+      "light": {
+        "watch_gte": 20000,
+        "watch_lte": 800,
+        "unit": "lux"
+      },
+      "otherwise": "NORMAL"
+    },
+    "label_source": "RULE_v1",
+    "allowed_source_types": [
+      "SIMULATED"
+    ],
+    "dataset_start": "2026-10-14T09:30:00+00:00",
+    "split_time": "2026-10-19T09:30:00+00:00",
+    "dataset_end_exclusive": "2026-10-21T09:30:00+00:00",
+    "split_policy": "first_5_days_train_next_2_days_test; split_raw_rows_before_windows",
+    "original_row_count": 336
+  },
+  "generated_at": "2026-10-21T09:47:16.709827+00:00",
+  "positive_class": "WATCH",
+  "zero_division": 0,
+  "train_count": 233,
+  "test_count": 89,
+  "class_distribution": {
+    "train": {
+      "NORMAL": 118,
+      "WATCH": 115
+    },
+    "test": {
+      "NORMAL": 46,
+      "WATCH": 43
+    }
+  },
+  "majority_class": "NORMAL",
+  "baselines": {
+    "majority": {
+      "train": {
+        "accuracy": 0.5064377682403434,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "confusion_matrix": {
+          "TN": 118,
+          "FP": 0,
+          "FN": 115,
+          "TP": 0
+        }
+      },
+      "test": {
+        "accuracy": 0.5168539325842697,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "confusion_matrix": {
+          "TN": 46,
+          "FP": 0,
+          "FN": 43,
+          "TP": 0
+        }
+      }
+    },
+    "logistic_regression": {
+      "train": {
+        "accuracy": 0.9828326180257511,
+        "precision": 0.9663865546218487,
+        "recall": 1.0,
+        "f1": 0.9829059829059829,
+        "confusion_matrix": {
+          "TN": 114,
+          "FP": 4,
+          "FN": 0,
+          "TP": 115
+        }
+      },
+      "test": {
+        "accuracy": 0.9775280898876404,
+        "precision": 0.9555555555555556,
+        "recall": 1.0,
+        "f1": 0.9772727272727273,
+        "confusion_matrix": {
+          "TN": 44,
+          "FP": 2,
+          "FN": 0,
+          "TP": 43
+        }
+      }
+    }
+  },
+  "confusion_matrix": {
+    "majority": {
+      "train": {
+        "TN": 118,
+        "FP": 0,
+        "FN": 115,
+        "TP": 0
+      },
+      "test": {
+        "TN": 46,
+        "FP": 0,
+        "FN": 43,
+        "TP": 0
+      }
+    },
+    "logistic_regression": {
+      "train": {
+        "TN": 114,
+        "FP": 4,
+        "FN": 0,
+        "TP": 115
+      },
+      "test": {
+        "TN": 44,
+        "FP": 2,
+        "FN": 0,
+        "TP": 43
+      }
+    }
+  },
+  "recall_comparison": "测试集WATCH Recall：多数类基线=0.0000，逻辑回归=1.0000；改善（差值+1.0000）。",
+  "error_samples": [
+    {
+      "sample_id": "w6-h2:260,261,262,263,264,265,266,267",
+      "type": "FP",
+      "window_start": "2026-10-19T19:00:00+00:00",
+      "window_end": "2026-10-19T21:30:00+00:00",
+      "future_start": "2026-10-19T22:00:00+00:00",
+      "future_end": "2026-10-19T22:30:00+00:00",
+      "features": {
+        "temp_current": 21.62,
+        "temp_mean": 20.881666666666668,
+        "temp_delta": 0.9800000000000004,
+        "hum_current": 72.75,
+        "hum_mean": 74.23166666666667,
+        "hum_delta": -3.530000000000001,
+        "light_current": 0.0,
+        "light_delta": 0.0
+      },
+      "true_label": "NORMAL",
+      "predicted_label": "WATCH",
+      "predicted_probability_watch": 0.6173249388657787,
+      "future_means_for_analysis_only": {
+        "temperature": 22.54,
+        "humidity": 69.305,
+        "light": 1395.09
+      },
+      "explanation": "假阳性：输入当前光照为0.00 lux、光照delta为0.00 lux；事后回查未来均值为温度22.54°C、湿度69.31%、光照1395.09 lux，未来三项均未触发RULE_v1，但模型WATCH概率高于0.5，产生误报。"
+    },
+    {
+      "sample_id": "w6-h2:308,309,310,311,312,313,314,315",
+      "type": "FP",
+      "window_start": "2026-10-20T19:00:00+00:00",
+      "window_end": "2026-10-20T21:30:00+00:00",
+      "future_start": "2026-10-20T22:00:00+00:00",
+      "future_end": "2026-10-20T22:30:00+00:00",
+      "features": {
+        "temp_current": 21.34,
+        "temp_mean": 20.613333333333333,
+        "temp_delta": 1.1799999999999997,
+        "hum_current": 71.6,
+        "hum_mean": 74.53166666666667,
+        "hum_delta": -2.8900000000000006,
+        "light_current": 0.0,
+        "light_delta": 0.0
+      },
+      "true_label": "NORMAL",
+      "predicted_label": "WATCH",
+      "predicted_probability_watch": 0.6199064884989602,
+      "future_means_for_analysis_only": {
+        "temperature": 22.29,
+        "humidity": 70.985,
+        "light": 1560.95
+      },
+      "explanation": "假阳性：输入当前光照为0.00 lux、光照delta为0.00 lux；事后回查未来均值为温度22.29°C、湿度70.98%、光照1560.95 lux，未来三项均未触发RULE_v1，但模型WATCH概率高于0.5，产生误报。"
+    }
+  ],
+  "training_audit": {
+    "fit_split": "train_only",
+    "scaler_fit_sample_count": 233,
+    "scaler_mean": [
+      23.954721030042926,
+      23.92944206008584,
+      0.04708154506437769,
+      65.24072961373388,
+      65.32977825464951,
+      -0.16098712446351937,
+      5844.419742489272,
+      265.927339055794
+    ],
+    "model_saved": true
+  }
+}

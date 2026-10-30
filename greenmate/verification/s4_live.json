@@ -1,0 +1,2028 @@
+{
+  "mode": "real_registered_tools_real_forecast_real_saved_model_real_llm",
+  "checks": {
+    "protected_assets_unchanged": true,
+    "weather_transport_header_only": true,
+    "fixed_question_unchanged": true,
+    "five_sources": true,
+    "knowledge_off_four_sources": true,
+    "explicit_conflict": true,
+    "knowledge_really_called_and_adopted": true,
+    "knowledge_off_not_called": true,
+    "explanations_completed": true,
+    "no_absolutes": true,
+    "model_and_history_unchanged_between_runs": true,
+    "future_forecast_valid": true,
+    "archives_recall_exactly": true
+  },
+  "runs": [
+    {
+      "run_id": "run_20261025_080518_8eb04ffd37f2",
+      "analysis_time": "2026-10-25T08:05:18.635998+00:00",
+      "location": "北京",
+      "question": "分析当前番茄生长环境状态以及接下来值得关注的变化，并说明判断依据。",
+      "state": {
+        "status": "ok",
+        "source": "SIMULATED",
+        "time": "2026-10-25T08:15:18.121474+00:00",
+        "data": {
+          "temperature": 32.0,
+          "humidity": 65.0,
+          "light": 24000.0,
+          "source_type": "SIMULATED",
+          "timestamp": "2026-10-25T08:05:18.635998+00:00"
+        },
+        "error": null,
+        "analysis_time": "2026-10-25T08:05:18.635998+00:00"
+      },
+      "history_window": {
+        "status": "ok",
+        "start": "2026-10-25T05:05:18.635998+00:00",
+        "end": "2026-10-25T08:05:18.635998+00:00",
+        "interval": "(start, end]",
+        "hours": 3,
+        "items": [
+          {
+            "id": 1,
+            "timestamp": "2026-10-25T05:35:18.635998+00:00",
+            "temperature": 27.0,
+            "humidity": 65.0,
+            "light": 18000.0,
+            "source_type": "SIMULATED",
+            "sim_scenario": "S4_conflict"
+          },
+          {
+            "id": 2,
+            "timestamp": "2026-10-25T06:05:18.635998+00:00",
+            "temperature": 28.0,
+            "humidity": 65.0,
+            "light": 19200.0,
+            "source_type": "SIMULATED",
+            "sim_scenario": "S4_conflict"
+          },
+          {
+            "id": 3,
+            "timestamp": "2026-10-25T06:35:18.635998+00:00",
+            "temperature": 29.0,
+            "humidity": 65.0,
+            "light": 20400.0,
+            "source_type": "SIMULATED",
+            "sim_scenario": "S4_conflict"
+          },
+          {
+            "id": 4,
+            "timestamp": "2026-10-25T07:05:18.635998+00:00",
+            "temperature": 30.0,
+            "humidity": 65.0,
+            "light": 21600.0,
+            "source_type": "SIMULATED",
+            "sim_scenario": "S4_conflict"
+          },
+          {
+            "id": 5,
+            "timestamp": "2026-10-25T07:35:18.635998+00:00",
+            "temperature": 31.0,
+            "humidity": 65.0,
+            "light": 22800.0,
+            "source_type": "SIMULATED",
+            "sim_scenario": "S4_conflict"
+          },
+          {
+            "id": 6,
+            "timestamp": "2026-10-25T08:05:18.635998+00:00",
+            "temperature": 32.0,
+            "humidity": 65.0,
+            "light": 24000.0,
+            "source_type": "SIMULATED",
+            "sim_scenario": "S4_conflict"
+          }
+        ],
+        "count": 6,
+        "source": "SIMULATED",
+        "error": null
+      },
+      "prediction": {
+        "status": "ok",
+        "prediction": "NORMAL",
+        "probability": 1.6667388893822853e-07,
+        "model_version": "attention_v1",
+        "window_start": "2026-10-25T05:35:18.635998+00:00",
+        "window_end": "2026-10-25T08:05:18.635998+00:00",
+        "source_type": "SIMULATED",
+        "evidence_type": "MODEL_OUTPUT",
+        "error": null,
+        "probability_of": "WATCH",
+        "horizon": 2,
+        "input_features": {
+          "temp_current": 32.0,
+          "temp_mean": 29.5,
+          "temp_delta": 5.0,
+          "hum_current": 65.0,
+          "hum_mean": 65.0,
+          "hum_delta": 0.0,
+          "light_current": 24000.0,
+          "light_delta": 6000.0
+        },
+        "input_sample_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "model_artifact_sha256": "3b27c3580e68f57eb636b53ae838a9bb8f96ac6286bef45922412f916f83527c",
+        "model_trained_at": "2026-10-21T09:47:16.709827+00:00",
+        "target_start": "2026-10-25T08:05:18.635998+00:00",
+        "target_end": "2026-10-25T09:05:18.635998+00:00",
+        "horizon_minutes": 60,
+        "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。",
+        "analysis_time": "2026-10-25T08:05:18.635998+00:00"
+      },
+      "judgment": {
+        "analysis_time": "2026-10-25T08:05:18.635998+00:00",
+        "location": "北京",
+        "current_state": {
+          "temperature": 32.0,
+          "humidity": 65.0,
+          "light": 24000.0,
+          "source_type": "SIMULATED",
+          "timestamp": "2026-10-25T08:05:18.635998+00:00"
+        },
+        "history_window": {
+          "start": "2026-10-25T05:05:18.635998+00:00",
+          "end": "2026-10-25T08:05:18.635998+00:00",
+          "interval": "(start, end]",
+          "hours": 3,
+          "count": 6,
+          "source": "SIMULATED"
+        },
+        "recent_trend": {
+          "status": "ok",
+          "method": "first_to_last_delta_with_display_tolerance",
+          "metrics": {
+            "temperature": {
+              "direction": "rising",
+              "first": 27.0,
+              "last": 32.0,
+              "delta": 5.0,
+              "mean": 29.5,
+              "min": 27.0,
+              "max": 32.0,
+              "display_tolerance": 0.5
+            },
+            "humidity": {
+              "direction": "stable",
+              "first": 65.0,
+              "last": 65.0,
+              "delta": 0.0,
+              "mean": 65.0,
+              "min": 65.0,
+              "max": 65.0,
+              "display_tolerance": 2.0
+            },
+            "light": {
+              "direction": "rising",
+              "first": 18000.0,
+              "last": 24000.0,
+              "delta": 6000.0,
+              "mean": 21000.0,
+              "min": 18000.0,
+              "max": 24000.0,
+              "display_tolerance": 1000.0
+            }
+          },
+          "note": "趋势描述不等于适宜性或风险规则；首尾相近不代表中间完全无波动，需同时看min/max。"
+        },
+        "predicted_attention": {
+          "status": "ok",
+          "prediction": "NORMAL",
+          "probability": 1.6667388893822853e-07,
+          "model_version": "attention_v1",
+          "window_start": "2026-10-25T05:35:18.635998+00:00",
+          "window_end": "2026-10-25T08:05:18.635998+00:00",
+          "source_type": "SIMULATED",
+          "evidence_type": "MODEL_OUTPUT",
+          "error": null,
+          "probability_of": "WATCH",
+          "horizon": 2,
+          "input_features": {
+            "temp_current": 32.0,
+            "temp_mean": 29.5,
+            "temp_delta": 5.0,
+            "hum_current": 65.0,
+            "hum_mean": 65.0,
+            "hum_delta": 0.0,
+            "light_current": 24000.0,
+            "light_delta": 6000.0
+          },
+          "input_sample_ids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "model_artifact_sha256": "3b27c3580e68f57eb636b53ae838a9bb8f96ac6286bef45922412f916f83527c",
+          "model_trained_at": "2026-10-21T09:47:16.709827+00:00",
+          "target_start": "2026-10-25T08:05:18.635998+00:00",
+          "target_end": "2026-10-25T09:05:18.635998+00:00",
+          "horizon_minutes": 60,
+          "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。",
+          "analysis_time": "2026-10-25T08:05:18.635998+00:00"
+        },
+        "evidence_status": {
+          "current_state": "ok",
+          "recent_history": "ok",
+          "prediction": "ok",
+          "weather": "ok",
+          "plant_knowledge": "ok",
+          "knowledge": "ok"
+        },
+        "weather_evidence": {
+          "source_type": "WEATHER_FORECAST",
+          "source": "OPEN_METEO",
+          "provider": "OPEN_METEO",
+          "time": "2026-10-25T08:15:23.284774+00:00",
+          "retrieved_at": "2026-10-25T08:15:23.284774+00:00",
+          "forecast_time": {
+            "start": "2026-10-25T09:00:00+00:00",
+            "end": "2026-10-25T20:00:00+00:00"
+          },
+          "analysis_time": "2026-10-25T08:05:18.635998+00:00",
+          "status": "ok",
+          "result": {
+            "location": "北京",
+            "latitude": 39.9,
+            "longitude": 116.4,
+            "hours": 12,
+            "timezone": "UTC",
+            "units": {
+              "temperature": "°C",
+              "humidity": "%"
+            },
+            "items": [
+              {
+                "timestamp": "2026-10-25T09:00:00+00:00",
+                "temperature": 11.2,
+                "humidity": 77
+              },
+              {
+                "timestamp": "2026-10-25T10:00:00+00:00",
+                "temperature": 10.7,
+                "humidity": 81
+              },
+              {
+                "timestamp": "2026-10-25T11:00:00+00:00",
+                "temperature": 10.6,
+                "humidity": 83
+              },
+              {
+                "timestamp": "2026-10-25T12:00:00+00:00",
+                "temperature": 10.5,
+                "humidity": 86
+              },
+              {
+                "timestamp": "2026-10-25T13:00:00+00:00",
+                "temperature": 10.2,
+                "humidity": 91
+              },
+              {
+                "timestamp": "2026-10-25T14:00:00+00:00",
+                "temperature": 10.0,
+                "humidity": 93
+              },
+              {
+                "timestamp": "2026-10-25T15:00:00+00:00",
+                "temperature": 9.9,
+                "humidity": 92
+              },
+              {
+                "timestamp": "2026-10-25T16:00:00+00:00",
+                "temperature": 9.8,
+                "humidity": 92
+              },
+              {
+                "timestamp": "2026-10-25T17:00:00+00:00",
+                "temperature": 9.8,
+                "humidity": 93
+              },
+              {
+                "timestamp": "2026-10-25T18:00:00+00:00",
+                "temperature": 9.8,
+                "humidity": 95
+              },
+              {
+                "timestamp": "2026-10-25T19:00:00+00:00",
+                "temperature": 9.9,
+                "humidity": 95
+              },
+              {
+                "timestamp": "2026-10-25T20:00:00+00:00",
+                "temperature": 9.9,
+                "humidity": 94
+              }
+            ]
+          },
+          "error": null,
+          "excluded_past_count": 0
+        },
+        "knowledge": {
+          "source_type": "KNOWLEDGE",
+          "source": "LOCAL_KNOWLEDGE",
+          "time": "2026-10-25T08:15:30.627539+00:00",
+          "status": "ok",
+          "result": {
+            "query": "分析当前番茄生长环境状态以及接下来值得关注的变化，并说明判断依据。 当前状态：当前温度32.0°C，空气湿度65.0%，光照24000.0lux；来源SIMULATED。检索番茄适宜温度、湿度、光照、高温风险和关注条件。",
+            "items": [
+              {
+                "id": "tomato_heat_01",
+                "name": "番茄",
+                "temperature": "温室白天约24–27°C；晴天后夜间约17–18°C，阴天后约16–17°C。品种、生育期和栽培方式会影响适用性。",
+                "humidity": "温室番茄空气相对湿度约60–70%可作参考；需结合生育期、昼夜、通风与结露检查，不能代替土壤含水量。",
+                "light": "喜充足光照；露地每天至少6小时直射光。瞬时lux读数不能替代日光时长或日光积分。",
+                "water_freq": "按根区含水状况、栽培方式和生育期检查，不设固定浇水周期。",
+                "tips": "温室高温时关注通风与遮阴，资料建议尽量维持低于约29.4°C（85°F）；这是条件性管理参考，不是病害判定阈值。内部近期升温且光照较强时，应核对内部后续读数与通风情况；户外预报降温不能直接证明内部同步降温。",
+                "high_temperature_risk": "温室升温与强光组合提示需要检查热负荷及通风条件，不代表已经发生伤害；未来变化还缺内部后续实测、品种及生育期证据。",
+                "heat_attention_c": 29.4,
+                "references": [
+                  {
+                    "title": "UMass / New England Vegetable Management Guide: Tomato, Greenhouse and High Tunnel",
+                    "url": "https://nevegetable.org/crops/tomato-greenhouse-and-high-tunnel"
+                  },
+                  {
+                    "title": "University of Maryland Extension: Growing Tomatoes in a Home Garden",
+                    "url": "https://www.extension.umd.edu/resource/growing-tomatoes-home-garden"
+                  },
+                  {
+                    "title": "Mississippi State University Extension: Greenhouse Tomato Handbook",
+                    "url": "https://extension.msstate.edu/sites/default/files/publications/publications/p1828_web.pdf"
+                  }
+                ],
+                "citation": {
+                  "id": "tomato_heat_01",
+                  "name": "番茄",
+                  "snippet": "温室白天约24–27°C；晴天后夜间约17–18°C，阴天后约16–17°C。品种、生育期和栽培方式会影响适用性。\n温室番茄空气相对湿度约60–70%可作参考；需结合生育期、昼夜、通风与结露检查，不能代替土壤含水量。\n喜充足光照；露地每天至少6小时直射光。瞬时lux读数不能替代日光时长或日光积分。\n温室升温与强光组合提示需要检查热负荷及通风条件，不代表已经发生伤害；未来变化还缺内部后续实测、品种及生育期证据。\n温室高温时关注通风与遮阴，资料建议尽量维持低于约29.4°C（85°F）；这是条件性管理参考，不是病害判定阈值。内部近期升温且光照较强时，应核对内部后续读数与通风情况；户外预报降温不能直接证明内部同步降温。"
+                }
+              }
+            ]
+          },
+          "error": null,
+          "citation": [
+            {
+              "id": "tomato_heat_01",
+              "name": "番茄",
+              "snippet": "温室白天约24–27°C；晴天后夜间约17–18°C，阴天后约16–17°C。品种、生育期和栽培方式会影响适用性。\n温室番茄空气相对湿度约60–70%可作参考；需结合生育期、昼夜、通风与结露检查，不能代替土壤含水量。\n喜充足光照；露地每天至少6小时直射光。瞬时lux读数不能替代日光时长或日光积分。\n温室升温与强光组合提示需要检查热负荷及通风条件，不代表已经发生伤害；未来变化还缺内部后续实测、品种及生育期证据。\n温室高温时关注通风与遮阴，资料建议尽量维持低于约29.4°C（85°F）；这是条件性管理参考，不是病害判定阈值。内部近期升温且光照较强时，应核对内部后续读数与通风情况；户外预报降温不能直接证明内部同步降温。"
+            }
+          ]
+        },
+        "evidence_by_type": [
+          {
+            "source_type": "CURRENT_STATE",
+            "source": "SIMULATED",
+            "time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "temperature": 32.0,
+              "humidity": 65.0,
+              "light": 24000.0,
+              "source_type": "SIMULATED",
+              "timestamp": "2026-10-25T08:05:18.635998+00:00"
+            },
+            "error": null
+          },
+          {
+            "source_type": "HISTORY",
+            "source": "SIMULATED",
+            "time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "start": "2026-10-25T05:05:18.635998+00:00",
+              "end": "2026-10-25T08:05:18.635998+00:00",
+              "interval": "(start, end]",
+              "hours": 3,
+              "count": 6,
+              "items": [
+                {
+                  "id": 1,
+                  "timestamp": "2026-10-25T05:35:18.635998+00:00",
+                  "temperature": 27.0,
+                  "humidity": 65.0,
+                  "light": 18000.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 2,
+                  "timestamp": "2026-10-25T06:05:18.635998+00:00",
+                  "temperature": 28.0,
+                  "humidity": 65.0,
+                  "light": 19200.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 3,
+                  "timestamp": "2026-10-25T06:35:18.635998+00:00",
+                  "temperature": 29.0,
+                  "humidity": 65.0,
+                  "light": 20400.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 4,
+                  "timestamp": "2026-10-25T07:05:18.635998+00:00",
+                  "temperature": 30.0,
+                  "humidity": 65.0,
+                  "light": 21600.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 5,
+                  "timestamp": "2026-10-25T07:35:18.635998+00:00",
+                  "temperature": 31.0,
+                  "humidity": 65.0,
+                  "light": 22800.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 6,
+                  "timestamp": "2026-10-25T08:05:18.635998+00:00",
+                  "temperature": 32.0,
+                  "humidity": 65.0,
+                  "light": 24000.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                }
+              ],
+              "trend": {
+                "status": "ok",
+                "method": "first_to_last_delta_with_display_tolerance",
+                "metrics": {
+                  "temperature": {
+                    "direction": "rising",
+                    "first": 27.0,
+                    "last": 32.0,
+                    "delta": 5.0,
+                    "mean": 29.5,
+                    "min": 27.0,
+                    "max": 32.0,
+                    "display_tolerance": 0.5
+                  },
+                  "humidity": {
+                    "direction": "stable",
+                    "first": 65.0,
+                    "last": 65.0,
+                    "delta": 0.0,
+                    "mean": 65.0,
+                    "min": 65.0,
+                    "max": 65.0,
+                    "display_tolerance": 2.0
+                  },
+                  "light": {
+                    "direction": "rising",
+                    "first": 18000.0,
+                    "last": 24000.0,
+                    "delta": 6000.0,
+                    "mean": 21000.0,
+                    "min": 18000.0,
+                    "max": 24000.0,
+                    "display_tolerance": 1000.0
+                  }
+                },
+                "note": "趋势描述不等于适宜性或风险规则；首尾相近不代表中间完全无波动，需同时看min/max。"
+              }
+            },
+            "error": null
+          },
+          {
+            "source_type": "MODEL_OUTPUT",
+            "source": "MODEL_OUTPUT",
+            "time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "prediction": "NORMAL",
+              "probability": 1.6667388893822853e-07,
+              "model_version": "attention_v1",
+              "window_start": "2026-10-25T05:35:18.635998+00:00",
+              "window_end": "2026-10-25T08:05:18.635998+00:00",
+              "source_type": "SIMULATED",
+              "evidence_type": "MODEL_OUTPUT",
+              "error": null,
+              "probability_of": "WATCH",
+              "horizon": 2,
+              "input_features": {
+                "temp_current": 32.0,
+                "temp_mean": 29.5,
+                "temp_delta": 5.0,
+                "hum_current": 65.0,
+                "hum_mean": 65.0,
+                "hum_delta": 0.0,
+                "light_current": 24000.0,
+                "light_delta": 6000.0
+              },
+              "input_sample_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ],
+              "model_artifact_sha256": "3b27c3580e68f57eb636b53ae838a9bb8f96ac6286bef45922412f916f83527c",
+              "model_trained_at": "2026-10-21T09:47:16.709827+00:00",
+              "target_start": "2026-10-25T08:05:18.635998+00:00",
+              "target_end": "2026-10-25T09:05:18.635998+00:00",
+              "horizon_minutes": 60,
+              "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。",
+              "analysis_time": "2026-10-25T08:05:18.635998+00:00"
+            },
+            "error": null,
+            "model_version": "attention_v1"
+          },
+          {
+            "source_type": "WEATHER_FORECAST",
+            "source": "OPEN_METEO",
+            "provider": "OPEN_METEO",
+            "time": "2026-10-25T08:15:23.284774+00:00",
+            "retrieved_at": "2026-10-25T08:15:23.284774+00:00",
+            "forecast_time": {
+              "start": "2026-10-25T09:00:00+00:00",
+              "end": "2026-10-25T20:00:00+00:00"
+            },
+            "analysis_time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "location": "北京",
+              "latitude": 39.9,
+              "longitude": 116.4,
+              "hours": 12,
+              "timezone": "UTC",
+              "units": {
+                "temperature": "°C",
+                "humidity": "%"
+              },
+              "items": [
+                {
+                  "timestamp": "2026-10-25T09:00:00+00:00",
+                  "temperature": 11.2,
+                  "humidity": 77
+                },
+                {
+                  "timestamp": "2026-10-25T10:00:00+00:00",
+                  "temperature": 10.7,
+                  "humidity": 81
+                },
+                {
+                  "timestamp": "2026-10-25T11:00:00+00:00",
+                  "temperature": 10.6,
+                  "humidity": 83
+                },
+                {
+                  "timestamp": "2026-10-25T12:00:00+00:00",
+                  "temperature": 10.5,
+                  "humidity": 86
+                },
+                {
+                  "timestamp": "2026-10-25T13:00:00+00:00",
+                  "temperature": 10.2,
+                  "humidity": 91
+                },
+                {
+                  "timestamp": "2026-10-25T14:00:00+00:00",
+                  "temperature": 10.0,
+                  "humidity": 93
+                },
+                {
+                  "timestamp": "2026-10-25T15:00:00+00:00",
+                  "temperature": 9.9,
+                  "humidity": 92
+                },
+                {
+                  "timestamp": "2026-10-25T16:00:00+00:00",
+                  "temperature": 9.8,
+                  "humidity": 92
+                },
+                {
+                  "timestamp": "2026-10-25T17:00:00+00:00",
+                  "temperature": 9.8,
+                  "humidity": 93
+                },
+                {
+                  "timestamp": "2026-10-25T18:00:00+00:00",
+                  "temperature": 9.8,
+                  "humidity": 95
+                },
+                {
+                  "timestamp": "2026-10-25T19:00:00+00:00",
+                  "temperature": 9.9,
+                  "humidity": 95
+                },
+                {
+                  "timestamp": "2026-10-25T20:00:00+00:00",
+                  "temperature": 9.9,
+                  "humidity": 94
+                }
+              ]
+            },
+            "error": null,
+            "excluded_past_count": 0
+          },
+          {
+            "source_type": "KNOWLEDGE",
+            "source": "LOCAL_KNOWLEDGE",
+            "time": "2026-10-25T08:15:30.627539+00:00",
+            "status": "ok",
+            "result": {
+              "query": "分析当前番茄生长环境状态以及接下来值得关注的变化，并说明判断依据。 当前状态：当前温度32.0°C，空气湿度65.0%，光照24000.0lux；来源SIMULATED。检索番茄适宜温度、湿度、光照、高温风险和关注条件。",
+              "items": [
+                {
+                  "id": "tomato_heat_01",
+                  "name": "番茄",
+                  "temperature": "温室白天约24–27°C；晴天后夜间约17–18°C，阴天后约16–17°C。品种、生育期和栽培方式会影响适用性。",
+                  "humidity": "温室番茄空气相对湿度约60–70%可作参考；需结合生育期、昼夜、通风与结露检查，不能代替土壤含水量。",
+                  "light": "喜充足光照；露地每天至少6小时直射光。瞬时lux读数不能替代日光时长或日光积分。",
+                  "water_freq": "按根区含水状况、栽培方式和生育期检查，不设固定浇水周期。",
+                  "tips": "温室高温时关注通风与遮阴，资料建议尽量维持低于约29.4°C（85°F）；这是条件性管理参考，不是病害判定阈值。内部近期升温且光照较强时，应核对内部后续读数与通风情况；户外预报降温不能直接证明内部同步降温。",
+                  "high_temperature_risk": "温室升温与强光组合提示需要检查热负荷及通风条件，不代表已经发生伤害；未来变化还缺内部后续实测、品种及生育期证据。",
+                  "heat_attention_c": 29.4,
+                  "references": [
+                    {
+                      "title": "UMass / New England Vegetable Management Guide: Tomato, Greenhouse and High Tunnel",
+                      "url": "https://nevegetable.org/crops/tomato-greenhouse-and-high-tunnel"
+                    },
+                    {
+                      "title": "University of Maryland Extension: Growing Tomatoes in a Home Garden",
+                      "url": "https://www.extension.umd.edu/resource/growing-tomatoes-home-garden"
+                    },
+                    {
+                      "title": "Mississippi State University Extension: Greenhouse Tomato Handbook",
+                      "url": "https://extension.msstate.edu/sites/default/files/publications/publications/p1828_web.pdf"
+                    }
+                  ],
+                  "citation": {
+                    "id": "tomato_heat_01",
+                    "name": "番茄",
+                    "snippet": "温室白天约24–27°C；晴天后夜间约17–18°C，阴天后约16–17°C。品种、生育期和栽培方式会影响适用性。\n温室番茄空气相对湿度约60–70%可作参考；需结合生育期、昼夜、通风与结露检查，不能代替土壤含水量。\n喜充足光照；露地每天至少6小时直射光。瞬时lux读数不能替代日光时长或日光积分。\n温室升温与强光组合提示需要检查热负荷及通风条件，不代表已经发生伤害；未来变化还缺内部后续实测、品种及生育期证据。\n温室高温时关注通风与遮阴，资料建议尽量维持低于约29.4°C（85°F）；这是条件性管理参考，不是病害判定阈值。内部近期升温且光照较强时，应核对内部后续读数与通风情况；户外预报降温不能直接证明内部同步降温。"
+                  }
+                }
+              ]
+            },
+            "error": null,
+            "citation": [
+              {
+                "id": "tomato_heat_01",
+                "name": "番茄",
+                "snippet": "温室白天约24–27°C；晴天后夜间约17–18°C，阴天后约16–17°C。品种、生育期和栽培方式会影响适用性。\n温室番茄空气相对湿度约60–70%可作参考；需结合生育期、昼夜、通风与结露检查，不能代替土壤含水量。\n喜充足光照；露地每天至少6小时直射光。瞬时lux读数不能替代日光时长或日光积分。\n温室升温与强光组合提示需要检查热负荷及通风条件，不代表已经发生伤害；未来变化还缺内部后续实测、品种及生育期证据。\n温室高温时关注通风与遮阴，资料建议尽量维持低于约29.4°C（85°F）；这是条件性管理参考，不是病害判定阈值。内部近期升温且光照较强时，应核对内部后续读数与通风情况；户外预报降温不能直接证明内部同步降温。"
+              }
+            ]
+          }
+        ],
+        "evidence_records": [
+          {
+            "source_type": "CURRENT_STATE",
+            "source": "SIMULATED",
+            "time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "temperature": 32.0,
+              "humidity": 65.0,
+              "light": 24000.0,
+              "source_type": "SIMULATED",
+              "timestamp": "2026-10-25T08:05:18.635998+00:00"
+            },
+            "error": null
+          },
+          {
+            "source_type": "HISTORY",
+            "source": "SIMULATED",
+            "time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "start": "2026-10-25T05:05:18.635998+00:00",
+              "end": "2026-10-25T08:05:18.635998+00:00",
+              "interval": "(start, end]",
+              "hours": 3,
+              "count": 6,
+              "items": [
+                {
+                  "id": 1,
+                  "timestamp": "2026-10-25T05:35:18.635998+00:00",
+                  "temperature": 27.0,
+                  "humidity": 65.0,
+                  "light": 18000.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 2,
+                  "timestamp": "2026-10-25T06:05:18.635998+00:00",
+                  "temperature": 28.0,
+                  "humidity": 65.0,
+                  "light": 19200.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 3,
+                  "timestamp": "2026-10-25T06:35:18.635998+00:00",
+                  "temperature": 29.0,
+                  "humidity": 65.0,
+                  "light": 20400.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 4,
+                  "timestamp": "2026-10-25T07:05:18.635998+00:00",
+                  "temperature": 30.0,
+                  "humidity": 65.0,
+                  "light": 21600.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 5,
+                  "timestamp": "2026-10-25T07:35:18.635998+00:00",
+                  "temperature": 31.0,
+                  "humidity": 65.0,
+                  "light": 22800.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 6,
+                  "timestamp": "2026-10-25T08:05:18.635998+00:00",
+                  "temperature": 32.0,
+                  "humidity": 65.0,
+                  "light": 24000.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                }
+              ],
+              "trend": {
+                "status": "ok",
+                "method": "first_to_last_delta_with_display_tolerance",
+                "metrics": {
+                  "temperature": {
+                    "direction": "rising",
+                    "first": 27.0,
+                    "last": 32.0,
+                    "delta": 5.0,
+                    "mean": 29.5,
+                    "min": 27.0,
+                    "max": 32.0,
+                    "display_tolerance": 0.5
+                  },
+                  "humidity": {
+                    "direction": "stable",
+                    "first": 65.0,
+                    "last": 65.0,
+                    "delta": 0.0,
+                    "mean": 65.0,
+                    "min": 65.0,
+                    "max": 65.0,
+                    "display_tolerance": 2.0
+                  },
+                  "light": {
+                    "direction": "rising",
+                    "first": 18000.0,
+                    "last": 24000.0,
+                    "delta": 6000.0,
+                    "mean": 21000.0,
+                    "min": 18000.0,
+                    "max": 24000.0,
+                    "display_tolerance": 1000.0
+                  }
+                },
+                "note": "趋势描述不等于适宜性或风险规则；首尾相近不代表中间完全无波动，需同时看min/max。"
+              }
+            },
+            "error": null
+          },
+          {
+            "source_type": "MODEL_OUTPUT",
+            "source": "MODEL_OUTPUT",
+            "time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "prediction": "NORMAL",
+              "probability": 1.6667388893822853e-07,
+              "model_version": "attention_v1",
+              "window_start": "2026-10-25T05:35:18.635998+00:00",
+              "window_end": "2026-10-25T08:05:18.635998+00:00",
+              "source_type": "SIMULATED",
+              "evidence_type": "MODEL_OUTPUT",
+              "error": null,
+              "probability_of": "WATCH",
+              "horizon": 2,
+              "input_features": {
+                "temp_current": 32.0,
+                "temp_mean": 29.5,
+                "temp_delta": 5.0,
+                "hum_current": 65.0,
+                "hum_mean": 65.0,
+                "hum_delta": 0.0,
+                "light_current": 24000.0,
+                "light_delta": 6000.0
+              },
+              "input_sample_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ],
+              "model_artifact_sha256": "3b27c3580e68f57eb636b53ae838a9bb8f96ac6286bef45922412f916f83527c",
+              "model_trained_at": "2026-10-21T09:47:16.709827+00:00",
+              "target_start": "2026-10-25T08:05:18.635998+00:00",
+              "target_end": "2026-10-25T09:05:18.635998+00:00",
+              "horizon_minutes": 60,
+              "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。",
+              "analysis_time": "2026-10-25T08:05:18.635998+00:00"
+            },
+            "error": null,
+            "model_version": "attention_v1"
+          },
+          {
+            "source_type": "WEATHER_FORECAST",
+            "source": "OPEN_METEO",
+            "provider": "OPEN_METEO",
+            "time": "2026-10-25T08:15:23.284774+00:00",
+            "retrieved_at": "2026-10-25T08:15:23.284774+00:00",
+            "forecast_time": {
+              "start": "2026-10-25T09:00:00+00:00",
+              "end": "2026-10-25T20:00:00+00:00"
+            },
+            "analysis_time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "location": "北京",
+              "latitude": 39.9,
+              "longitude": 116.4,
+              "hours": 12,
+              "timezone": "UTC",
+              "units": {
+                "temperature": "°C",
+                "humidity": "%"
+              },
+              "items": [
+                {
+                  "timestamp": "2026-10-25T09:00:00+00:00",
+                  "temperature": 11.2,
+                  "humidity": 77
+                },
+                {
+                  "timestamp": "2026-10-25T10:00:00+00:00",
+                  "temperature": 10.7,
+                  "humidity": 81
+                },
+                {
+                  "timestamp": "2026-10-25T11:00:00+00:00",
+                  "temperature": 10.6,
+                  "humidity": 83
+                },
+                {
+                  "timestamp": "2026-10-25T12:00:00+00:00",
+                  "temperature": 10.5,
+                  "humidity": 86
+                },
+                {
+                  "timestamp": "2026-10-25T13:00:00+00:00",
+                  "temperature": 10.2,
+                  "humidity": 91
+                },
+                {
+                  "timestamp": "2026-10-25T14:00:00+00:00",
+                  "temperature": 10.0,
+                  "humidity": 93
+                },
+                {
+                  "timestamp": "2026-10-25T15:00:00+00:00",
+                  "temperature": 9.9,
+                  "humidity": 92
+                },
+                {
+                  "timestamp": "2026-10-25T16:00:00+00:00",
+                  "temperature": 9.8,
+                  "humidity": 92
+                },
+                {
+                  "timestamp": "2026-10-25T17:00:00+00:00",
+                  "temperature": 9.8,
+                  "humidity": 93
+                },
+                {
+                  "timestamp": "2026-10-25T18:00:00+00:00",
+                  "temperature": 9.8,
+                  "humidity": 95
+                },
+                {
+                  "timestamp": "2026-10-25T19:00:00+00:00",
+                  "temperature": 9.9,
+                  "humidity": 95
+                },
+                {
+                  "timestamp": "2026-10-25T20:00:00+00:00",
+                  "temperature": 9.9,
+                  "humidity": 94
+                }
+              ]
+            },
+            "error": null,
+            "excluded_past_count": 0
+          },
+          {
+            "source_type": "KNOWLEDGE",
+            "source": "LOCAL_KNOWLEDGE",
+            "time": "2026-10-25T08:15:30.627539+00:00",
+            "status": "ok",
+            "result": {
+              "query": "分析当前番茄生长环境状态以及接下来值得关注的变化，并说明判断依据。 当前状态：当前温度32.0°C，空气湿度65.0%，光照24000.0lux；来源SIMULATED。检索番茄适宜温度、湿度、光照、高温风险和关注条件。",
+              "items": [
+                {
+                  "id": "tomato_heat_01",
+                  "name": "番茄",
+                  "temperature": "温室白天约24–27°C；晴天后夜间约17–18°C，阴天后约16–17°C。品种、生育期和栽培方式会影响适用性。",
+                  "humidity": "温室番茄空气相对湿度约60–70%可作参考；需结合生育期、昼夜、通风与结露检查，不能代替土壤含水量。",
+                  "light": "喜充足光照；露地每天至少6小时直射光。瞬时lux读数不能替代日光时长或日光积分。",
+                  "water_freq": "按根区含水状况、栽培方式和生育期检查，不设固定浇水周期。",
+                  "tips": "温室高温时关注通风与遮阴，资料建议尽量维持低于约29.4°C（85°F）；这是条件性管理参考，不是病害判定阈值。内部近期升温且光照较强时，应核对内部后续读数与通风情况；户外预报降温不能直接证明内部同步降温。",
+                  "high_temperature_risk": "温室升温与强光组合提示需要检查热负荷及通风条件，不代表已经发生伤害；未来变化还缺内部后续实测、品种及生育期证据。",
+                  "heat_attention_c": 29.4,
+                  "references": [
+                    {
+                      "title": "UMass / New England Vegetable Management Guide: Tomato, Greenhouse and High Tunnel",
+                      "url": "https://nevegetable.org/crops/tomato-greenhouse-and-high-tunnel"
+                    },
+                    {
+                      "title": "University of Maryland Extension: Growing Tomatoes in a Home Garden",
+                      "url": "https://www.extension.umd.edu/resource/growing-tomatoes-home-garden"
+                    },
+                    {
+                      "title": "Mississippi State University Extension: Greenhouse Tomato Handbook",
+                      "url": "https://extension.msstate.edu/sites/default/files/publications/publications/p1828_web.pdf"
+                    }
+                  ],
+                  "citation": {
+                    "id": "tomato_heat_01",
+                    "name": "番茄",
+                    "snippet": "温室白天约24–27°C；晴天后夜间约17–18°C，阴天后约16–17°C。品种、生育期和栽培方式会影响适用性。\n温室番茄空气相对湿度约60–70%可作参考；需结合生育期、昼夜、通风与结露检查，不能代替土壤含水量。\n喜充足光照；露地每天至少6小时直射光。瞬时lux读数不能替代日光时长或日光积分。\n温室升温与强光组合提示需要检查热负荷及通风条件，不代表已经发生伤害；未来变化还缺内部后续实测、品种及生育期证据。\n温室高温时关注通风与遮阴，资料建议尽量维持低于约29.4°C（85°F）；这是条件性管理参考，不是病害判定阈值。内部近期升温且光照较强时，应核对内部后续读数与通风情况；户外预报降温不能直接证明内部同步降温。"
+                  }
+                }
+              ]
+            },
+            "error": null,
+            "citation": [
+              {
+                "id": "tomato_heat_01",
+                "name": "番茄",
+                "snippet": "温室白天约24–27°C；晴天后夜间约17–18°C，阴天后约16–17°C。品种、生育期和栽培方式会影响适用性。\n温室番茄空气相对湿度约60–70%可作参考；需结合生育期、昼夜、通风与结露检查，不能代替土壤含水量。\n喜充足光照；露地每天至少6小时直射光。瞬时lux读数不能替代日光时长或日光积分。\n温室升温与强光组合提示需要检查热负荷及通风条件，不代表已经发生伤害；未来变化还缺内部后续实测、品种及生育期证据。\n温室高温时关注通风与遮阴，资料建议尽量维持低于约29.4°C（85°F）；这是条件性管理参考，不是病害判定阈值。内部近期升温且光照较强时，应核对内部后续读数与通风情况；户外预报降温不能直接证明内部同步降温。"
+              }
+            ]
+          }
+        ],
+        "tool_trace": [
+          {
+            "tool": "get_current_environment",
+            "status": "ok",
+            "adopted": true,
+            "adopt_reason": "采用锚点之前的有效当前快照，只描述当前数值。",
+            "arguments": {},
+            "source_type": "CURRENT_STATE"
+          },
+          {
+            "tool": "get_weather_forecast",
+            "status": "ok",
+            "adopted": true,
+            "adopt_reason": "只采用通过时间校验的未来预报，用于外部趋势描述。",
+            "arguments": {
+              "location": "北京"
+            },
+            "source_type": "WEATHER_FORECAST"
+          },
+          {
+            "tool": "search_plant_knowledge",
+            "status": "ok",
+            "adopted": true,
+            "adopt_reason": "采用有稳定id、名称和原文片段的番茄知识，作为条件性养护背景。",
+            "arguments": {
+              "query": "分析当前番茄生长环境状态以及接下来值得关注的变化，并说明判断依据。 当前状态：当前温度32.0°C，空气湿度65.0%，光照24000.0lux；来源SIMULATED。检索番茄适宜温度、湿度、光照、高温风险和关注条件。"
+            },
+            "source_type": "KNOWLEDGE"
+          }
+        ],
+        "conflicts": [
+          {
+            "between": [
+              "HISTORY",
+              "WEATHER_FORECAST"
+            ],
+            "type": "direction_conflict",
+            "description": "内部近3小时温度rising，外部未来预报cooling，变化方向不同。空间与时间窗口不同，不能相互抵消；尚缺内部后续实测与内外耦合信息。"
+          },
+          {
+            "between": [
+              "MODEL_OUTPUT",
+              "KNOWLEDGE"
+            ],
+            "type": "attention_divergence",
+            "description": "模型原始输出NORMAL；知识tomato_heat_01给出的条件性高温管理参考为29.4°C，当前模拟温度32.0°C高于该参考，仍值得核查。两者目标和适用范围不同，不改模型标签，不据此诊断伤害。"
+          }
+        ],
+        "conclusion_level": "conflicting",
+        "weather_expectation": "cooling",
+        "attention_adjustment": "raise",
+        "adjustment_reason": "外部天气预报（OPEN_METEO）：2026-10-25T09:00:00+00:00温度11.2°C，至2026-10-25T20:00:00+00:00为9.9°C（首尾变化-1.30°C；区间最低9.8°C、最高11.2°C）。增加对外部升降温变化的关注；不能据此推断内部同步变化或番茄风险等级上升。保留原始模型标签和概率，不因天气改判。",
+        "judgment_limits": [
+          "本链使用当前状态、锚点前3小时历史、已保存B06模型和通过B05注册工具实际检索的可选知识；天气是否采用以证据列表为准。",
+          "知识是条件性养护背景，不是内部实测或未来预报。无土壤湿度、品种和生育期，不能决定浇水或诊断伤害。",
+          "SIMULATED是模拟数据；attention_v1仅在SIMULATED与RULE_v1上训练，MODEL_OUTPUT不能替代实际观测，概率未经校准。",
+          "预测从实际输入末点开始，不从请求时间平移；WATCH必须如实保留，不等于已经发生异常或番茄病害。",
+          "当前状态是B02最后保存的快照，不保证与历史末点同步；按各自timestamp核对。",
+          "天气是地点的外部预报，不是内部实测；工具只提供温度与湿度，不能据此推断降雨、光照或温室内变化。外部趋势关注调整不是新增风险等级，也不修改MODEL_OUTPUT。",
+          "retrieved_at是本次获取时间，forecast_time是预报有效时间；若回查过去锚点，本次获取的预报不代表当时可得的历史预报。天气区间与模型未来1小时区间可能不同，不能混称。",
+          "supported只表示现有证据支持各自范围内的描述；不代表未来结果确定。conflicting保留未消解分歧；insufficient表示核心证据不足。"
+        ],
+        "generated_by": "PROGRAM",
+        "explanation_status": "ok",
+        "llm_error": null
+      },
+      "answer": "当前锚点为2026-10-25T08:05:18.635998+00:00（UTC），地点北京，当前状态来自SIMULATED：温度32.0°C、湿度65.0%、光照24000.0 lux。该快照是程序最后保存的值，与历史末点按各自timestamp分别核对。无土壤湿度、番茄阶段等信息，不能据此决定浇水或诊断伤害。\n\n历史窗口为2026-10-25T05:05:18.635998+00:00至2026-10-25T08:05:18.635998+00:00（UTC），6个SIMULATED样本：温度由27.0升至32.0（Δ5.0，均值29.5）；湿度稳定在65.0（Δ0.0）；光照由18000.0升至24000.0（Δ6000.0）。这是内部模拟历史趋势，不等于适宜性或风险规则。外部OPEN_METEO预报（2026-10-25T09:00:00+00:00至20:00:00+00:00）显示降温、湿度偏高；与内部升温方向相反，空间与时间窗口不同，不能相互抵消，仍缺内部后续实测与内外耦合信息。\n\n模型attention_v1输出prediction为NORMAL，probability_of为WATCH，P(WATCH)约为1.67e-07；输入窗口2026-10-25T05:35:18.635998+00:00至08:05:18.635998+00:00，预测目标区间为2026-10-25T08:05:18.635998+00:00至09:05:18.635998+00:00（UTC），预测起点是window_end而非请求时刻。该MODEL_OUTPUT仅基于SIMULATED与RULE_v1，概率未经校准，不是天气或植物知识，也不保证未来真实风险。程序conclusion_level为conflicting，并因外部降温将关注度上调，但保留原模型标签与概率。\n\n知识采用tomato_heat_01（名称“番茄”）：其片段给出温室白天约24–27°C、湿度约60–70%可作参考，并建议尽量维持低于约29.4°C，属条件性管理参考；当前模拟温度32.0°C高于该参考，但知识不判定已发生伤害，且缺品种、生育期、土壤湿度等证据。综合判断边界：SIMULATED非实测、MODEL_OUTPUT非实际观测、外部预报非内部读数；方向分歧与关注分歧并存，需等内部后续实测补充，不能据此推断风险等级或采取行动。",
+      "evidence_status": {
+        "current_state": "ok",
+        "recent_history": "ok",
+        "prediction": "ok",
+        "weather": "ok",
+        "plant_knowledge": "ok",
+        "knowledge": "ok"
+      },
+      "created_at": "2026-10-25T08:15:30.628311+00:00",
+      "tool_trace": [
+        {
+          "tool": "get_current_environment",
+          "status": "ok",
+          "adopted": true,
+          "adopt_reason": "采用锚点之前的有效当前快照，只描述当前数值。",
+          "arguments": {},
+          "source_type": "CURRENT_STATE"
+        },
+        {
+          "tool": "get_weather_forecast",
+          "status": "ok",
+          "adopted": true,
+          "adopt_reason": "只采用通过时间校验的未来预报，用于外部趋势描述。",
+          "arguments": {
+            "location": "北京"
+          },
+          "source_type": "WEATHER_FORECAST"
+        },
+        {
+          "tool": "search_plant_knowledge",
+          "status": "ok",
+          "adopted": true,
+          "adopt_reason": "采用有稳定id、名称和原文片段的番茄知识，作为条件性养护背景。",
+          "arguments": {
+            "query": "分析当前番茄生长环境状态以及接下来值得关注的变化，并说明判断依据。 当前状态：当前温度32.0°C，空气湿度65.0%，光照24000.0lux；来源SIMULATED。检索番茄适宜温度、湿度、光照、高温风险和关注条件。"
+          },
+          "source_type": "KNOWLEDGE"
+        }
+      ]
+    },
+    {
+      "run_id": "run_20261025_080518_9adf9fa4de28",
+      "analysis_time": "2026-10-25T08:05:18.635998+00:00",
+      "location": "北京",
+      "question": "分析当前番茄生长环境状态以及接下来值得关注的变化，并说明判断依据。",
+      "state": {
+        "status": "ok",
+        "source": "SIMULATED",
+        "time": "2026-10-25T08:15:35.780472+00:00",
+        "data": {
+          "temperature": 32.0,
+          "humidity": 65.0,
+          "light": 24000.0,
+          "source_type": "SIMULATED",
+          "timestamp": "2026-10-25T08:05:18.635998+00:00"
+        },
+        "error": null,
+        "analysis_time": "2026-10-25T08:05:18.635998+00:00"
+      },
+      "history_window": {
+        "status": "ok",
+        "start": "2026-10-25T05:05:18.635998+00:00",
+        "end": "2026-10-25T08:05:18.635998+00:00",
+        "interval": "(start, end]",
+        "hours": 3,
+        "items": [
+          {
+            "id": 1,
+            "timestamp": "2026-10-25T05:35:18.635998+00:00",
+            "temperature": 27.0,
+            "humidity": 65.0,
+            "light": 18000.0,
+            "source_type": "SIMULATED",
+            "sim_scenario": "S4_conflict"
+          },
+          {
+            "id": 2,
+            "timestamp": "2026-10-25T06:05:18.635998+00:00",
+            "temperature": 28.0,
+            "humidity": 65.0,
+            "light": 19200.0,
+            "source_type": "SIMULATED",
+            "sim_scenario": "S4_conflict"
+          },
+          {
+            "id": 3,
+            "timestamp": "2026-10-25T06:35:18.635998+00:00",
+            "temperature": 29.0,
+            "humidity": 65.0,
+            "light": 20400.0,
+            "source_type": "SIMULATED",
+            "sim_scenario": "S4_conflict"
+          },
+          {
+            "id": 4,
+            "timestamp": "2026-10-25T07:05:18.635998+00:00",
+            "temperature": 30.0,
+            "humidity": 65.0,
+            "light": 21600.0,
+            "source_type": "SIMULATED",
+            "sim_scenario": "S4_conflict"
+          },
+          {
+            "id": 5,
+            "timestamp": "2026-10-25T07:35:18.635998+00:00",
+            "temperature": 31.0,
+            "humidity": 65.0,
+            "light": 22800.0,
+            "source_type": "SIMULATED",
+            "sim_scenario": "S4_conflict"
+          },
+          {
+            "id": 6,
+            "timestamp": "2026-10-25T08:05:18.635998+00:00",
+            "temperature": 32.0,
+            "humidity": 65.0,
+            "light": 24000.0,
+            "source_type": "SIMULATED",
+            "sim_scenario": "S4_conflict"
+          }
+        ],
+        "count": 6,
+        "source": "SIMULATED",
+        "error": null
+      },
+      "prediction": {
+        "status": "ok",
+        "prediction": "NORMAL",
+        "probability": 1.6667388893822853e-07,
+        "model_version": "attention_v1",
+        "window_start": "2026-10-25T05:35:18.635998+00:00",
+        "window_end": "2026-10-25T08:05:18.635998+00:00",
+        "source_type": "SIMULATED",
+        "evidence_type": "MODEL_OUTPUT",
+        "error": null,
+        "probability_of": "WATCH",
+        "horizon": 2,
+        "input_features": {
+          "temp_current": 32.0,
+          "temp_mean": 29.5,
+          "temp_delta": 5.0,
+          "hum_current": 65.0,
+          "hum_mean": 65.0,
+          "hum_delta": 0.0,
+          "light_current": 24000.0,
+          "light_delta": 6000.0
+        },
+        "input_sample_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "model_artifact_sha256": "3b27c3580e68f57eb636b53ae838a9bb8f96ac6286bef45922412f916f83527c",
+        "model_trained_at": "2026-10-21T09:47:16.709827+00:00",
+        "target_start": "2026-10-25T08:05:18.635998+00:00",
+        "target_end": "2026-10-25T09:05:18.635998+00:00",
+        "horizon_minutes": 60,
+        "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。",
+        "analysis_time": "2026-10-25T08:05:18.635998+00:00"
+      },
+      "judgment": {
+        "analysis_time": "2026-10-25T08:05:18.635998+00:00",
+        "location": "北京",
+        "current_state": {
+          "temperature": 32.0,
+          "humidity": 65.0,
+          "light": 24000.0,
+          "source_type": "SIMULATED",
+          "timestamp": "2026-10-25T08:05:18.635998+00:00"
+        },
+        "history_window": {
+          "start": "2026-10-25T05:05:18.635998+00:00",
+          "end": "2026-10-25T08:05:18.635998+00:00",
+          "interval": "(start, end]",
+          "hours": 3,
+          "count": 6,
+          "source": "SIMULATED"
+        },
+        "recent_trend": {
+          "status": "ok",
+          "method": "first_to_last_delta_with_display_tolerance",
+          "metrics": {
+            "temperature": {
+              "direction": "rising",
+              "first": 27.0,
+              "last": 32.0,
+              "delta": 5.0,
+              "mean": 29.5,
+              "min": 27.0,
+              "max": 32.0,
+              "display_tolerance": 0.5
+            },
+            "humidity": {
+              "direction": "stable",
+              "first": 65.0,
+              "last": 65.0,
+              "delta": 0.0,
+              "mean": 65.0,
+              "min": 65.0,
+              "max": 65.0,
+              "display_tolerance": 2.0
+            },
+            "light": {
+              "direction": "rising",
+              "first": 18000.0,
+              "last": 24000.0,
+              "delta": 6000.0,
+              "mean": 21000.0,
+              "min": 18000.0,
+              "max": 24000.0,
+              "display_tolerance": 1000.0
+            }
+          },
+          "note": "趋势描述不等于适宜性或风险规则；首尾相近不代表中间完全无波动，需同时看min/max。"
+        },
+        "predicted_attention": {
+          "status": "ok",
+          "prediction": "NORMAL",
+          "probability": 1.6667388893822853e-07,
+          "model_version": "attention_v1",
+          "window_start": "2026-10-25T05:35:18.635998+00:00",
+          "window_end": "2026-10-25T08:05:18.635998+00:00",
+          "source_type": "SIMULATED",
+          "evidence_type": "MODEL_OUTPUT",
+          "error": null,
+          "probability_of": "WATCH",
+          "horizon": 2,
+          "input_features": {
+            "temp_current": 32.0,
+            "temp_mean": 29.5,
+            "temp_delta": 5.0,
+            "hum_current": 65.0,
+            "hum_mean": 65.0,
+            "hum_delta": 0.0,
+            "light_current": 24000.0,
+            "light_delta": 6000.0
+          },
+          "input_sample_ids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "model_artifact_sha256": "3b27c3580e68f57eb636b53ae838a9bb8f96ac6286bef45922412f916f83527c",
+          "model_trained_at": "2026-10-21T09:47:16.709827+00:00",
+          "target_start": "2026-10-25T08:05:18.635998+00:00",
+          "target_end": "2026-10-25T09:05:18.635998+00:00",
+          "horizon_minutes": 60,
+          "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。",
+          "analysis_time": "2026-10-25T08:05:18.635998+00:00"
+        },
+        "evidence_status": {
+          "current_state": "ok",
+          "recent_history": "ok",
+          "prediction": "ok",
+          "weather": "ok",
+          "plant_knowledge": "unavailable",
+          "knowledge": "unavailable"
+        },
+        "weather_evidence": {
+          "source_type": "WEATHER_FORECAST",
+          "source": "OPEN_METEO",
+          "provider": "OPEN_METEO",
+          "time": "2026-10-25T08:15:38.435742+00:00",
+          "retrieved_at": "2026-10-25T08:15:38.435742+00:00",
+          "forecast_time": {
+            "start": "2026-10-25T09:00:00+00:00",
+            "end": "2026-10-25T20:00:00+00:00"
+          },
+          "analysis_time": "2026-10-25T08:05:18.635998+00:00",
+          "status": "ok",
+          "result": {
+            "location": "北京",
+            "latitude": 39.9,
+            "longitude": 116.4,
+            "hours": 12,
+            "timezone": "UTC",
+            "units": {
+              "temperature": "°C",
+              "humidity": "%"
+            },
+            "items": [
+              {
+                "timestamp": "2026-10-25T09:00:00+00:00",
+                "temperature": 11.2,
+                "humidity": 77
+              },
+              {
+                "timestamp": "2026-10-25T10:00:00+00:00",
+                "temperature": 10.7,
+                "humidity": 81
+              },
+              {
+                "timestamp": "2026-10-25T11:00:00+00:00",
+                "temperature": 10.6,
+                "humidity": 83
+              },
+              {
+                "timestamp": "2026-10-25T12:00:00+00:00",
+                "temperature": 10.5,
+                "humidity": 86
+              },
+              {
+                "timestamp": "2026-10-25T13:00:00+00:00",
+                "temperature": 10.2,
+                "humidity": 91
+              },
+              {
+                "timestamp": "2026-10-25T14:00:00+00:00",
+                "temperature": 10.0,
+                "humidity": 93
+              },
+              {
+                "timestamp": "2026-10-25T15:00:00+00:00",
+                "temperature": 9.9,
+                "humidity": 92
+              },
+              {
+                "timestamp": "2026-10-25T16:00:00+00:00",
+                "temperature": 9.8,
+                "humidity": 92
+              },
+              {
+                "timestamp": "2026-10-25T17:00:00+00:00",
+                "temperature": 9.8,
+                "humidity": 93
+              },
+              {
+                "timestamp": "2026-10-25T18:00:00+00:00",
+                "temperature": 9.8,
+                "humidity": 95
+              },
+              {
+                "timestamp": "2026-10-25T19:00:00+00:00",
+                "temperature": 9.9,
+                "humidity": 95
+              },
+              {
+                "timestamp": "2026-10-25T20:00:00+00:00",
+                "temperature": 9.9,
+                "humidity": 94
+              }
+            ]
+          },
+          "error": null,
+          "excluded_past_count": 0
+        },
+        "knowledge": {
+          "source_type": "KNOWLEDGE",
+          "source": "LOCAL_KNOWLEDGE",
+          "time": "2026-10-25T08:15:38.439242+00:00",
+          "status": "unavailable",
+          "result": {
+            "items": []
+          },
+          "error": "本次未启用知识检索。",
+          "citation": []
+        },
+        "evidence_by_type": [
+          {
+            "source_type": "CURRENT_STATE",
+            "source": "SIMULATED",
+            "time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "temperature": 32.0,
+              "humidity": 65.0,
+              "light": 24000.0,
+              "source_type": "SIMULATED",
+              "timestamp": "2026-10-25T08:05:18.635998+00:00"
+            },
+            "error": null
+          },
+          {
+            "source_type": "HISTORY",
+            "source": "SIMULATED",
+            "time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "start": "2026-10-25T05:05:18.635998+00:00",
+              "end": "2026-10-25T08:05:18.635998+00:00",
+              "interval": "(start, end]",
+              "hours": 3,
+              "count": 6,
+              "items": [
+                {
+                  "id": 1,
+                  "timestamp": "2026-10-25T05:35:18.635998+00:00",
+                  "temperature": 27.0,
+                  "humidity": 65.0,
+                  "light": 18000.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 2,
+                  "timestamp": "2026-10-25T06:05:18.635998+00:00",
+                  "temperature": 28.0,
+                  "humidity": 65.0,
+                  "light": 19200.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 3,
+                  "timestamp": "2026-10-25T06:35:18.635998+00:00",
+                  "temperature": 29.0,
+                  "humidity": 65.0,
+                  "light": 20400.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 4,
+                  "timestamp": "2026-10-25T07:05:18.635998+00:00",
+                  "temperature": 30.0,
+                  "humidity": 65.0,
+                  "light": 21600.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 5,
+                  "timestamp": "2026-10-25T07:35:18.635998+00:00",
+                  "temperature": 31.0,
+                  "humidity": 65.0,
+                  "light": 22800.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 6,
+                  "timestamp": "2026-10-25T08:05:18.635998+00:00",
+                  "temperature": 32.0,
+                  "humidity": 65.0,
+                  "light": 24000.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                }
+              ],
+              "trend": {
+                "status": "ok",
+                "method": "first_to_last_delta_with_display_tolerance",
+                "metrics": {
+                  "temperature": {
+                    "direction": "rising",
+                    "first": 27.0,
+                    "last": 32.0,
+                    "delta": 5.0,
+                    "mean": 29.5,
+                    "min": 27.0,
+                    "max": 32.0,
+                    "display_tolerance": 0.5
+                  },
+                  "humidity": {
+                    "direction": "stable",
+                    "first": 65.0,
+                    "last": 65.0,
+                    "delta": 0.0,
+                    "mean": 65.0,
+                    "min": 65.0,
+                    "max": 65.0,
+                    "display_tolerance": 2.0
+                  },
+                  "light": {
+                    "direction": "rising",
+                    "first": 18000.0,
+                    "last": 24000.0,
+                    "delta": 6000.0,
+                    "mean": 21000.0,
+                    "min": 18000.0,
+                    "max": 24000.0,
+                    "display_tolerance": 1000.0
+                  }
+                },
+                "note": "趋势描述不等于适宜性或风险规则；首尾相近不代表中间完全无波动，需同时看min/max。"
+              }
+            },
+            "error": null
+          },
+          {
+            "source_type": "MODEL_OUTPUT",
+            "source": "MODEL_OUTPUT",
+            "time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "prediction": "NORMAL",
+              "probability": 1.6667388893822853e-07,
+              "model_version": "attention_v1",
+              "window_start": "2026-10-25T05:35:18.635998+00:00",
+              "window_end": "2026-10-25T08:05:18.635998+00:00",
+              "source_type": "SIMULATED",
+              "evidence_type": "MODEL_OUTPUT",
+              "error": null,
+              "probability_of": "WATCH",
+              "horizon": 2,
+              "input_features": {
+                "temp_current": 32.0,
+                "temp_mean": 29.5,
+                "temp_delta": 5.0,
+                "hum_current": 65.0,
+                "hum_mean": 65.0,
+                "hum_delta": 0.0,
+                "light_current": 24000.0,
+                "light_delta": 6000.0
+              },
+              "input_sample_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ],
+              "model_artifact_sha256": "3b27c3580e68f57eb636b53ae838a9bb8f96ac6286bef45922412f916f83527c",
+              "model_trained_at": "2026-10-21T09:47:16.709827+00:00",
+              "target_start": "2026-10-25T08:05:18.635998+00:00",
+              "target_end": "2026-10-25T09:05:18.635998+00:00",
+              "horizon_minutes": 60,
+              "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。",
+              "analysis_time": "2026-10-25T08:05:18.635998+00:00"
+            },
+            "error": null,
+            "model_version": "attention_v1"
+          },
+          {
+            "source_type": "WEATHER_FORECAST",
+            "source": "OPEN_METEO",
+            "provider": "OPEN_METEO",
+            "time": "2026-10-25T08:15:38.435742+00:00",
+            "retrieved_at": "2026-10-25T08:15:38.435742+00:00",
+            "forecast_time": {
+              "start": "2026-10-25T09:00:00+00:00",
+              "end": "2026-10-25T20:00:00+00:00"
+            },
+            "analysis_time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "location": "北京",
+              "latitude": 39.9,
+              "longitude": 116.4,
+              "hours": 12,
+              "timezone": "UTC",
+              "units": {
+                "temperature": "°C",
+                "humidity": "%"
+              },
+              "items": [
+                {
+                  "timestamp": "2026-10-25T09:00:00+00:00",
+                  "temperature": 11.2,
+                  "humidity": 77
+                },
+                {
+                  "timestamp": "2026-10-25T10:00:00+00:00",
+                  "temperature": 10.7,
+                  "humidity": 81
+                },
+                {
+                  "timestamp": "2026-10-25T11:00:00+00:00",
+                  "temperature": 10.6,
+                  "humidity": 83
+                },
+                {
+                  "timestamp": "2026-10-25T12:00:00+00:00",
+                  "temperature": 10.5,
+                  "humidity": 86
+                },
+                {
+                  "timestamp": "2026-10-25T13:00:00+00:00",
+                  "temperature": 10.2,
+                  "humidity": 91
+                },
+                {
+                  "timestamp": "2026-10-25T14:00:00+00:00",
+                  "temperature": 10.0,
+                  "humidity": 93
+                },
+                {
+                  "timestamp": "2026-10-25T15:00:00+00:00",
+                  "temperature": 9.9,
+                  "humidity": 92
+                },
+                {
+                  "timestamp": "2026-10-25T16:00:00+00:00",
+                  "temperature": 9.8,
+                  "humidity": 92
+                },
+                {
+                  "timestamp": "2026-10-25T17:00:00+00:00",
+                  "temperature": 9.8,
+                  "humidity": 93
+                },
+                {
+                  "timestamp": "2026-10-25T18:00:00+00:00",
+                  "temperature": 9.8,
+                  "humidity": 95
+                },
+                {
+                  "timestamp": "2026-10-25T19:00:00+00:00",
+                  "temperature": 9.9,
+                  "humidity": 95
+                },
+                {
+                  "timestamp": "2026-10-25T20:00:00+00:00",
+                  "temperature": 9.9,
+                  "humidity": 94
+                }
+              ]
+            },
+            "error": null,
+            "excluded_past_count": 0
+          },
+          {
+            "source_type": "KNOWLEDGE",
+            "source": "LOCAL_KNOWLEDGE",
+            "time": "2026-10-25T08:15:38.439242+00:00",
+            "status": "unavailable",
+            "result": {
+              "items": []
+            },
+            "error": "本次未启用知识检索。",
+            "citation": []
+          }
+        ],
+        "evidence_records": [
+          {
+            "source_type": "CURRENT_STATE",
+            "source": "SIMULATED",
+            "time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "temperature": 32.0,
+              "humidity": 65.0,
+              "light": 24000.0,
+              "source_type": "SIMULATED",
+              "timestamp": "2026-10-25T08:05:18.635998+00:00"
+            },
+            "error": null
+          },
+          {
+            "source_type": "HISTORY",
+            "source": "SIMULATED",
+            "time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "start": "2026-10-25T05:05:18.635998+00:00",
+              "end": "2026-10-25T08:05:18.635998+00:00",
+              "interval": "(start, end]",
+              "hours": 3,
+              "count": 6,
+              "items": [
+                {
+                  "id": 1,
+                  "timestamp": "2026-10-25T05:35:18.635998+00:00",
+                  "temperature": 27.0,
+                  "humidity": 65.0,
+                  "light": 18000.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 2,
+                  "timestamp": "2026-10-25T06:05:18.635998+00:00",
+                  "temperature": 28.0,
+                  "humidity": 65.0,
+                  "light": 19200.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 3,
+                  "timestamp": "2026-10-25T06:35:18.635998+00:00",
+                  "temperature": 29.0,
+                  "humidity": 65.0,
+                  "light": 20400.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 4,
+                  "timestamp": "2026-10-25T07:05:18.635998+00:00",
+                  "temperature": 30.0,
+                  "humidity": 65.0,
+                  "light": 21600.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 5,
+                  "timestamp": "2026-10-25T07:35:18.635998+00:00",
+                  "temperature": 31.0,
+                  "humidity": 65.0,
+                  "light": 22800.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                },
+                {
+                  "id": 6,
+                  "timestamp": "2026-10-25T08:05:18.635998+00:00",
+                  "temperature": 32.0,
+                  "humidity": 65.0,
+                  "light": 24000.0,
+                  "source_type": "SIMULATED",
+                  "sim_scenario": "S4_conflict"
+                }
+              ],
+              "trend": {
+                "status": "ok",
+                "method": "first_to_last_delta_with_display_tolerance",
+                "metrics": {
+                  "temperature": {
+                    "direction": "rising",
+                    "first": 27.0,
+                    "last": 32.0,
+                    "delta": 5.0,
+                    "mean": 29.5,
+                    "min": 27.0,
+                    "max": 32.0,
+                    "display_tolerance": 0.5
+                  },
+                  "humidity": {
+                    "direction": "stable",
+                    "first": 65.0,
+                    "last": 65.0,
+                    "delta": 0.0,
+                    "mean": 65.0,
+                    "min": 65.0,
+                    "max": 65.0,
+                    "display_tolerance": 2.0
+                  },
+                  "light": {
+                    "direction": "rising",
+                    "first": 18000.0,
+                    "last": 24000.0,
+                    "delta": 6000.0,
+                    "mean": 21000.0,
+                    "min": 18000.0,
+                    "max": 24000.0,
+                    "display_tolerance": 1000.0
+                  }
+                },
+                "note": "趋势描述不等于适宜性或风险规则；首尾相近不代表中间完全无波动，需同时看min/max。"
+              }
+            },
+            "error": null
+          },
+          {
+            "source_type": "MODEL_OUTPUT",
+            "source": "MODEL_OUTPUT",
+            "time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "prediction": "NORMAL",
+              "probability": 1.6667388893822853e-07,
+              "model_version": "attention_v1",
+              "window_start": "2026-10-25T05:35:18.635998+00:00",
+              "window_end": "2026-10-25T08:05:18.635998+00:00",
+              "source_type": "SIMULATED",
+              "evidence_type": "MODEL_OUTPUT",
+              "error": null,
+              "probability_of": "WATCH",
+              "horizon": 2,
+              "input_features": {
+                "temp_current": 32.0,
+                "temp_mean": 29.5,
+                "temp_delta": 5.0,
+                "hum_current": 65.0,
+                "hum_mean": 65.0,
+                "hum_delta": 0.0,
+                "light_current": 24000.0,
+                "light_delta": 6000.0
+              },
+              "input_sample_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ],
+              "model_artifact_sha256": "3b27c3580e68f57eb636b53ae838a9bb8f96ac6286bef45922412f916f83527c",
+              "model_trained_at": "2026-10-21T09:47:16.709827+00:00",
+              "target_start": "2026-10-25T08:05:18.635998+00:00",
+              "target_end": "2026-10-25T09:05:18.635998+00:00",
+              "horizon_minutes": 60,
+              "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。",
+              "analysis_time": "2026-10-25T08:05:18.635998+00:00"
+            },
+            "error": null,
+            "model_version": "attention_v1"
+          },
+          {
+            "source_type": "WEATHER_FORECAST",
+            "source": "OPEN_METEO",
+            "provider": "OPEN_METEO",
+            "time": "2026-10-25T08:15:38.435742+00:00",
+            "retrieved_at": "2026-10-25T08:15:38.435742+00:00",
+            "forecast_time": {
+              "start": "2026-10-25T09:00:00+00:00",
+              "end": "2026-10-25T20:00:00+00:00"
+            },
+            "analysis_time": "2026-10-25T08:05:18.635998+00:00",
+            "status": "ok",
+            "result": {
+              "location": "北京",
+              "latitude": 39.9,
+              "longitude": 116.4,
+              "hours": 12,
+              "timezone": "UTC",
+              "units": {
+                "temperature": "°C",
+                "humidity": "%"
+              },
+              "items": [
+                {
+                  "timestamp": "2026-10-25T09:00:00+00:00",
+                  "temperature": 11.2,
+                  "humidity": 77
+                },
+                {
+                  "timestamp": "2026-10-25T10:00:00+00:00",
+                  "temperature": 10.7,
+                  "humidity": 81
+                },
+                {
+                  "timestamp": "2026-10-25T11:00:00+00:00",
+                  "temperature": 10.6,
+                  "humidity": 83
+                },
+                {
+                  "timestamp": "2026-10-25T12:00:00+00:00",
+                  "temperature": 10.5,
+                  "humidity": 86
+                },
+                {
+                  "timestamp": "2026-10-25T13:00:00+00:00",
+                  "temperature": 10.2,
+                  "humidity": 91
+                },
+                {
+                  "timestamp": "2026-10-25T14:00:00+00:00",
+                  "temperature": 10.0,
+                  "humidity": 93
+                },
+                {
+                  "timestamp": "2026-10-25T15:00:00+00:00",
+                  "temperature": 9.9,
+                  "humidity": 92
+                },
+                {
+                  "timestamp": "2026-10-25T16:00:00+00:00",
+                  "temperature": 9.8,
+                  "humidity": 92
+                },
+                {
+                  "timestamp": "2026-10-25T17:00:00+00:00",
+                  "temperature": 9.8,
+                  "humidity": 93
+                },
+                {
+                  "timestamp": "2026-10-25T18:00:00+00:00",
+                  "temperature": 9.8,
+                  "humidity": 95
+                },
+                {
+                  "timestamp": "2026-10-25T19:00:00+00:00",
+                  "temperature": 9.9,
+                  "humidity": 95
+                },
+                {
+                  "timestamp": "2026-10-25T20:00:00+00:00",
+                  "temperature": 9.9,
+                  "humidity": 94
+                }
+              ]
+            },
+            "error": null,
+            "excluded_past_count": 0
+          }
+        ],
+        "tool_trace": [
+          {
+            "tool": "get_current_environment",
+            "status": "ok",
+            "adopted": true,
+            "adopt_reason": "采用锚点之前的有效当前快照，只描述当前数值。",
+            "arguments": {},
+            "source_type": "CURRENT_STATE"
+          },
+          {
+            "tool": "get_weather_forecast",
+            "status": "ok",
+            "adopted": true,
+            "adopt_reason": "只采用通过时间校验的未来预报，用于外部趋势描述。",
+            "arguments": {
+              "location": "北京"
+            },
+            "source_type": "WEATHER_FORECAST"
+          }
+        ],
+        "conflicts": [
+          {
+            "between": [
+              "HISTORY",
+              "WEATHER_FORECAST"
+            ],
+            "type": "direction_conflict",
+            "description": "内部近3小时温度rising，外部未来预报cooling，变化方向不同。空间与时间窗口不同，不能相互抵消；尚缺内部后续实测与内外耦合信息。"
+          }
+        ],
+        "conclusion_level": "conflicting",
+        "weather_expectation": "cooling",
+        "attention_adjustment": "raise",
+        "adjustment_reason": "外部天气预报（OPEN_METEO）：2026-10-25T09:00:00+00:00温度11.2°C，至2026-10-25T20:00:00+00:00为9.9°C（首尾变化-1.30°C；区间最低9.8°C、最高11.2°C）。增加对外部升降温变化的关注；不能据此推断内部同步变化或番茄风险等级上升。保留原始模型标签和概率，不因天气改判。",
+        "judgment_limits": [
+          "本链使用B02当前快照、锚点前3小时历史、B06已保存模型，并通过原有工具获取可选外部天气；未查询植物知识。",
+          "无土壤湿度和番茄生长阶段证据，不能判断是否需要浇水，也不能引用未提供的番茄适宜阈值。",
+          "SIMULATED是模拟数据；attention_v1仅在SIMULATED与RULE_v1上训练，MODEL_OUTPUT不能替代实际观测，概率未经校准。",
+          "预测从实际输入末点开始，不从请求时间平移；WATCH必须如实保留，不等于已经发生异常或番茄病害。",
+          "当前状态是B02最后保存的快照，不保证与历史末点同步；按各自timestamp核对。",
+          "天气是地点的外部预报，不是内部实测；工具只提供温度与湿度，不能据此推断降雨、光照或温室内变化。外部趋势关注调整不是新增风险等级，也不修改MODEL_OUTPUT。",
+          "retrieved_at是本次获取时间，forecast_time是预报有效时间；若回查过去锚点，本次获取的预报不代表当时可得的历史预报。天气区间与模型未来1小时区间可能不同，不能混称。",
+          "本次无可采用知识：本次未启用知识检索。",
+          "supported只表示现有证据支持各自范围内的描述；不代表未来结果确定。conflicting保留未消解分歧；insufficient表示核心证据不足。"
+        ],
+        "generated_by": "PROGRAM",
+        "explanation_status": "ok",
+        "llm_error": null
+      },
+      "answer": "**当前状态**  \n本次分析锚点为2026-10-25T08:05:18.635998+00:00，地点北京，程序给出的conclusion_level为conflicting。当前快照来自SIMULATED模拟数据：温度32.0°C、湿度65.0%、光照24000.0，均为模拟内部状态，不是实测，也不等同于番茄适宜性结论。程序未提供土壤湿度、番茄生育阶段，知识检索状态为unavailable，因此本次未取得可采用知识，citation为空。\n\n**历史趋势**  \n历史窗口为2026-10-25T05:05:18.635998+00:00至2026-10-25T08:05:18.635998+00:00，共6个SIMULATED样本。温度由27.0升至32.0，delta为5.0，方向rising，均值29.5；湿度保持65.0，delta为0.0，方向stable；光照由18000.0升至24000.0，delta为6000.0，方向rising。趋势描述本身不等于适宜性或风险规则，首尾相近也不代表中间无波动。\n\n**模型预测**  \nattention_v1输出prediction为NORMAL，probability为1.6667388893822853e-07，probability_of为WATCH，即P(WATCH)为该值；模型版本为attention_v1，证据类型为MODEL_OUTPUT，未校准。其输入窗口为2026-10-25T05:35:18.635998+00:00至2026-10-25T08:05:18.635998+00:00，未来预测目标区间为2026-10-25T08:05:18.635998+00:00至2026-10-25T09:05:18.635998+00:00；预测起点是window_end，不是请求时刻。外部OPEN_METEO预报时间为2026-10-25T09:00:00+00:00至2026-10-25T20:00:00+00:00，首尾温度由11.2°C降至9.9°C，呈cooling，程序据此提高对外部变化的关注，但不改判模型输出。\n\n**判断边界**  \nconflicts记录了HISTORY与WEATHER_FORECAST的方向分歧：内部近3小时温度rising，外部预报cooling；二者空间与时间窗口不同，不能相互抵消。仍缺内部后续实测、内外耦合信息、土壤湿度及番茄生育期。SIMULATED不是实测，MODEL_OUTPUT不是天气或植物知识；WATCH须如实保留，表示关注而非已发生异常。未执行本链未提供的工具或搜索。",
+      "evidence_status": {
+        "current_state": "ok",
+        "recent_history": "ok",
+        "prediction": "ok",
+        "weather": "ok",
+        "plant_knowledge": "unavailable",
+        "knowledge": "unavailable"
+      },
+      "created_at": "2026-10-25T08:15:38.440164+00:00",
+      "tool_trace": [
+        {
+          "tool": "get_current_environment",
+          "status": "ok",
+          "adopted": true,
+          "adopt_reason": "采用锚点之前的有效当前快照，只描述当前数值。",
+          "arguments": {},
+          "source_type": "CURRENT_STATE"
+        },
+        {
+          "tool": "get_weather_forecast",
+          "status": "ok",
+          "adopted": true,
+          "adopt_reason": "只采用通过时间校验的未来预报，用于外部趋势描述。",
+          "arguments": {
+            "location": "北京"
+          },
+          "source_type": "WEATHER_FORECAST"
+        }
+      ]
+    }
+  ]
+}

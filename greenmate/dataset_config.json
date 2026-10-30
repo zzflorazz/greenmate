@@ -1,0 +1,46 @@
+{
+  "window_size": 6,
+  "horizon": 2,
+  "sample_interval_minutes": 30,
+  "features": [
+    "temp_current",
+    "temp_mean",
+    "temp_delta",
+    "hum_current",
+    "hum_mean",
+    "hum_delta",
+    "light_current",
+    "light_delta"
+  ],
+  "label_rules": {
+    "name": "next_window_attention",
+    "label_source": "RULE_v1",
+    "aggregation": "future_window_mean",
+    "operator": "any",
+    "temperature": {
+      "watch_gte": 32,
+      "watch_lte": 10,
+      "unit": "°C"
+    },
+    "humidity": {
+      "watch_lte": 35,
+      "watch_gte": 85,
+      "unit": "%"
+    },
+    "light": {
+      "watch_gte": 20000,
+      "watch_lte": 800,
+      "unit": "lux"
+    },
+    "otherwise": "NORMAL"
+  },
+  "label_source": "RULE_v1",
+  "allowed_source_types": [
+    "SIMULATED"
+  ],
+  "dataset_start": "2026-10-14T09:30:00+00:00",
+  "split_time": "2026-10-19T09:30:00+00:00",
+  "dataset_end_exclusive": "2026-10-21T09:30:00+00:00",
+  "split_policy": "first_5_days_train_next_2_days_test; split_raw_rows_before_windows",
+  "original_row_count": 336
+}

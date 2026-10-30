@@ -1,0 +1,103 @@
+{
+  "model_version": "attention_v1",
+  "trained_at": "2026-10-21T09:47:16.709827+00:00",
+  "feature_names": [
+    "temp_current",
+    "temp_mean",
+    "temp_delta",
+    "hum_current",
+    "hum_mean",
+    "hum_delta",
+    "light_current",
+    "light_delta"
+  ],
+  "window_size": 6,
+  "horizon": 2,
+  "window_config": {
+    "window_size": 6,
+    "horizon": 2,
+    "sample_interval_minutes": 30,
+    "features": [
+      "temp_current",
+      "temp_mean",
+      "temp_delta",
+      "hum_current",
+      "hum_mean",
+      "hum_delta",
+      "light_current",
+      "light_delta"
+    ],
+    "label_rules": {
+      "name": "next_window_attention",
+      "label_source": "RULE_v1",
+      "aggregation": "future_window_mean",
+      "operator": "any",
+      "temperature": {
+        "watch_gte": 32,
+        "watch_lte": 10,
+        "unit": "°C"
+      },
+      "humidity": {
+        "watch_lte": 35,
+        "watch_gte": 85,
+        "unit": "%"
+      },
+      "light": {
+        "watch_gte": 20000,
+        "watch_lte": 800,
+        "unit": "lux"
+      },
+      "otherwise": "NORMAL"
+    },
+    "label_source": "RULE_v1",
+    "allowed_source_types": [
+      "SIMULATED"
+    ],
+    "dataset_start": "2026-10-14T09:30:00+00:00",
+    "split_time": "2026-10-19T09:30:00+00:00",
+    "dataset_end_exclusive": "2026-10-21T09:30:00+00:00",
+    "split_policy": "first_5_days_train_next_2_days_test; split_raw_rows_before_windows",
+    "original_row_count": 336
+  },
+  "scaler": {
+    "class": "StandardScaler",
+    "fit_split": "train_only",
+    "fit_sample_count": 233
+  },
+  "label_map": {
+    "0": "NORMAL",
+    "1": "WATCH"
+  },
+  "train_time_range": {
+    "start": "2026-10-14T09:30:00+00:00",
+    "end": "2026-10-19T09:00:00+00:00"
+  },
+  "metrics_summary": {
+    "train": {
+      "accuracy": 0.9828326180257511,
+      "precision": 0.9663865546218487,
+      "recall": 1.0,
+      "f1": 0.9829059829059829,
+      "confusion_matrix": {
+        "TN": 114,
+        "FP": 4,
+        "FN": 0,
+        "TP": 115
+      }
+    },
+    "test": {
+      "accuracy": 0.9775280898876404,
+      "precision": 0.9555555555555556,
+      "recall": 1.0,
+      "f1": 0.9772727272727273,
+      "confusion_matrix": {
+        "TN": 44,
+        "FP": 2,
+        "FN": 0,
+        "TP": 43
+      }
+    }
+  },
+  "sklearn_version": "1.9.1",
+  "artifact_sha256": "3b27c3580e68f57eb636b53ae838a9bb8f96ac6286bef45922412f916f83527c"
+}

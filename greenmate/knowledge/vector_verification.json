@@ -1,0 +1,38 @@
+{
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "dimensions": 384,
+  "indexed_records": 6,
+  "query": "植物缺水怎么办？",
+  "keyword_results": [],
+  "vector_results": [
+    "龟背竹",
+    "文竹"
+  ],
+  "ranking": [
+    {
+      "name": "龟背竹",
+      "score": 0.6962356074879087
+    },
+    {
+      "name": "文竹",
+      "score": 0.6916395476266511
+    },
+    {
+      "name": "发财树",
+      "score": 0.6897169247033492
+    },
+    {
+      "name": "绿萝",
+      "score": 0.650907188745795
+    },
+    {
+      "name": "多肉",
+      "score": 0.6382262014589873
+    },
+    {
+      "name": "仙人掌",
+      "score": 0.5974720091313921
+    }
+  ],
+  "limitation": "指定模型以英文为主，中文样例未命中绿萝/多肉；用户选择保留模型并记录该限制。"
+}

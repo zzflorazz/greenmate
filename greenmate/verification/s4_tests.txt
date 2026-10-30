@@ -1,0 +1,81 @@
+Command: .venv/bin/python -m unittest discover -q
+
+[llm.attempt] attempt=1 error_type=None status_code=200
+[llm.attempt] attempt=1 error_type=None status_code=200
+[failure-verification] invalid_history_hours: status=error; actual_tool=get_environment_history; sequence=1; elapsed_ms=0.281; missing_evidence=历史数据
+W1025 16:16:15.858000 78685 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 103/103 [00:00<00:00, 8259.19it/s]
+[failure-verification] empty_knowledge: status=ok; actual_tool=search_plant_knowledge; sequence=1; elapsed_ms=3535.636; missing_evidence=匹配的本地植物知识
+[failure-verification] weather_timeout: status=unavailable; actual_tool=get_weather_forecast; sequence=1; elapsed_ms=0.605; missing_evidence=未来12小时天气预报
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[seed] 已写入 336 条 SIMULATED 样本，sim_scenario=seed_demo。
+[seed] seed_demo 已有 336 条，跳过；新增 0 条。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[llm.attempt] attempt=1 error_type=None status_code=200
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[llm.attempt] attempt=1 error_type=None status_code=200
+[llm.attempt] attempt=1 error_type=None status_code=200
+[配置] 已读取模型配置与 API key（密钥不显示）。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[llm.attempt] attempt=1 error_type=None status_code=200
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[llm.attempt] attempt=1 error_type=AuthenticationError status_code=401
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[weather.forecast] unavailable: 天气API超时（5秒），未来12小时预报证据缺失。
+Executing <Task pending name='Task-328' coro=<S4EvidenceTests.test_normal_never_changed_and_no_conflict_fabricated_for_same_direction() running at /private/tmp/greenmate-b07-s4/test_s4_evidence.py:114> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() at /Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/futures.py:393, Task.task_wakeup()] created at /Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/base_events.py:460> cb=[_run_until_complete_cb() at /Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/base_events.py:181] created at /Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/runners.py:110> took 0.132 seconds
+[rag] 向量检索不可用，回退关键词检索：RuntimeError。
+[rag] 向量检索不可用，回退关键词检索：RuntimeError。
+[rag] 向量检索不可用，回退关键词检索：RuntimeError。
+[rag] 向量检索不可用，回退关键词检索：RuntimeError。
+[rag] 向量检索不可用，回退关键词检索：RuntimeError。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+[配置] 未设置 GREENMATE_API_KEY：联网问答不可用；请在项目 .env 填写后重启。本地状态、知识和预测仍可演示。
+[配置] 未找到项目 .env，当前使用环境变量及默认值；可复制 .env.example。
+----------------------------------------------------------------------
+Ran 114 tests in 6.853s
+
+OK

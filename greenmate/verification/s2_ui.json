@@ -1,0 +1,18 @@
+{
+  "mode": "real_scenario_api_history_model_archive_compare_with_existing_scripted_ui_explanation",
+  "checks": [
+    "two_buttons_same_question_same_current_distinct_history",
+    "automatic_comparison_changed_and_unchanged_fields",
+    "unchanged_model_labels_reported_honestly",
+    "repeated_scenario_writes_zero_samples",
+    "s1_archive_retained_after_switch",
+    "mobile_comparison_scroll_without_page_overflow",
+    "offline_error_retains_prior_comparison"
+  ],
+  "page_errors": [],
+  "passed": true,
+  "runs": [
+    "run_20261022_090844_916b06e70b9b",
+    "run_20261022_090844_f1f3082d39ea"
+  ]
+}

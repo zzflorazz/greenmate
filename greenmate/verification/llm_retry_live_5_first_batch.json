@@ -1,0 +1,1369 @@
+{
+  "mode": "five_sequential_real_llm_api_agent_requests_via_asgi",
+  "data_scope": "fresh_temporary_SIMULATED_seed_demo_only; public_Beijing_coordinates",
+  "started_at": "2026-10-21T10:11:03.716116+00:00",
+  "question": "预测接下来一小时要不要关注，并结合北京天气和绿萝养护知识说明。请区分模型预测、天气和知识证据并说明不确定性。",
+  "runs": [
+    {
+      "run": 1,
+      "http_status": 200,
+      "normal_answer": true,
+      "prediction_weather_knowledge_tools_present": true,
+      "result": {
+        "answer": "## 结论：模型给出“需要关注”的倾向，但天气证据缺失，无法做完整判断\n\n### 1. 模型预测（MODEL_OUTPUT，独立证据）\n- 模型版本：`attention_v1`；证据类型：MODEL_OUTPUT\n- 预测窗口：2026-10-21 07:30 → **10:00 UTC 结束**（window_end）\n- 预测目标：window_end **之后 60 分钟**（约 10:00–11:00 UTC）是否需要关注\n- 预测结果：**WATCH**，P(WATCH) = **0.758**\n- 数据性质：仅基于 **SIMULATED 合成数据 + RULE_v1 规则标签**；概率**未经校准**，不能当作真实植物风险的保证\n- 注意：模型给出的是相对窗口结束时间的预测，并不代表“现在起一小时”的实测状态；该窗口也已略早于请求时刻\n\n### 2. 当前环境（SIMULATED，非真实观测）\n- 温度 24 °C、空气湿度 65%、光照 12000，均标记为 SIMULATED 演示数据\n- **空气湿度不等于土壤湿度**，此数据不能用于判断盆土是否需要浇水\n- 光照值为模拟数据来源，也不是天气实测光照\n\n### 3. 北京未来12小时天气（未取得）\n- `get_weather_forecast` 返回 **unavailable**，OPEN_METEO 网络请求失败\n- 因此**未来12小时天气预报证据缺失**，无法判断室外温湿度变化、是否有降雨或强光等外部影响\n\n### 4. 绿萝养护知识（本地知识，status=ok）\n检索到绿萝条目（另有一条仙人掌，与本问题无关，不采用）：\n- 光照：半阴、明亮散射光\n- 浇水：约 7–10 天一次，**仅作参考，以盆土干湿为准**\n- 要点：喜湿润但怕积水；浇水前先检查盆土，表层干燥后再浇透，及时倒掉托盘积水；低温或光照弱时减少浇水，避免烈日直晒\n\n### 5. 证据完整度与建议\n已取得：模型预测、当前模拟状态、绿萝养护知识。\n**未取得**：北京未来12小时天气预报（服务不可用）。\n\n综合来看：\n- 模型 0.758 的关注概率只能说明在合成数据规则下“值得留意”，**不构成浇水或任何操作的理由**；\n- 按照知识证据，浇水前**必须实测盆土干湿**，而本次没有盆土湿度数据，也没有真实温湿度观测；\n- 由于天气预报缺失，无法评估接下来一小时的室外环境变化对室内盆土蒸发的影响。\n\n建议：把这次预测当作“值得再核查”的提示，实地检查绿萝盆土表层与托盘积水情况；如需要结合天气判断，请在天预报接口恢复后重试。本次未执行任何修改环境的操作。\n\n工具证据记录：\n- 第3次调用的未来12小时天气预报证据缺失（unavailable）：天气API网络请求失败，未来12小时预报证据缺失。",
+        "tool_calls": [
+          {
+            "sequence": 1,
+            "tool": "predict_next_attention",
+            "arguments": {},
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "source": "MODEL_OUTPUT",
+              "time": "2026-10-21T10:11:05.884720+00:00",
+              "data": {
+                "status": "ok",
+                "prediction": "WATCH",
+                "probability": 0.758076335540599,
+                "model_version": "attention_v1",
+                "window_start": "2026-10-21T07:30:00+00:00",
+                "window_end": "2026-10-21T10:00:00+00:00",
+                "source_type": "SIMULATED",
+                "evidence_type": "MODEL_OUTPUT",
+                "error": null,
+                "probability_of": "WATCH",
+                "horizon": 2,
+                "horizon_minutes": 60,
+                "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。"
+              },
+              "error": null
+            },
+            "elapsed_ms": 186.706
+          },
+          {
+            "sequence": 2,
+            "tool": "get_current_environment",
+            "arguments": {},
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "source": "SIMULATED",
+              "time": "2026-10-21T10:11:05.884941+00:00",
+              "data": {
+                "temperature": 24,
+                "humidity": 65,
+                "light": 12000,
+                "source_type": "SIMULATED",
+                "timestamp": "2026-10-21T10:11:03.726064+00:00"
+              },
+              "error": null
+            },
+            "elapsed_ms": 0.107
+          },
+          {
+            "sequence": 3,
+            "tool": "get_weather_forecast",
+            "arguments": {
+              "location": "北京"
+            },
+            "status": "unavailable",
+            "result": {
+              "status": "unavailable",
+              "source": "OPEN_METEO",
+              "time": "2026-10-21T10:11:10.891381+00:00",
+              "data": {},
+              "error": "天气API网络请求失败，未来12小时预报证据缺失。"
+            },
+            "elapsed_ms": 5006.736
+          },
+          {
+            "sequence": 4,
+            "tool": "search_plant_knowledge",
+            "arguments": {
+              "query": "绿萝 养护 浇水 湿度 光照"
+            },
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "source": "LOCAL_KNOWLEDGE",
+              "time": "2026-10-21T10:11:15.154781+00:00",
+              "data": {
+                "query": "绿萝 养护 浇水 湿度 光照",
+                "items": [
+                  {
+                    "name": "绿萝",
+                    "light": "半阴，明亮散射光",
+                    "water_freq": "7-10天（仅参考，以盆土干湿为准）",
+                    "tips": "喜湿润但怕积水。浇水前检查盆土，表层干燥后再浇透，及时倒掉托盘积水；低温或光照较弱时减少浇水，避免烈日直晒。"
+                  },
+                  {
+                    "name": "仙人掌",
+                    "light": "常见沙漠型仙人掌喜阳，需要充足光照",
+                    "water_freq": "生长期盆土干透后再浇，低温休眠期减少浇水",
+                    "tips": "常见沙漠型仙人掌喜阳、耐旱、怕积水。浇水应干透再浇，基质要透气排水；从弱光处移到强光处要逐步适应。蟹爪兰等森林型仙人掌是例外，更喜散射光，不能一概暴晒。"
+                  }
+                ]
+              },
+              "error": null
+            },
+            "elapsed_ms": 4263.043
+          }
+        ],
+        "iterations": 2
+      }
+    },
+    {
+      "run": 2,
+      "http_status": 200,
+      "normal_answer": true,
+      "prediction_weather_knowledge_tools_present": true,
+      "result": {
+        "answer": "已取得证据，其中天气一项失败。下面逐项说明。\n\n## 一、模型预测（MODEL_OUTPUT，唯一的模型输出）\n- 模型版本：attention_v1（据 limitations：仅基于 **SIMULATED 合成数据** + RULE_v1 规则标签训练）\n- 预测窗口：`window_end = 2026-10-21T10:00:00Z`，预测对象是此窗口结束后的 **60 分钟**（对应你问的“接下来一小时”），而不是请求时刻 10:11 起的未来一小时\n- 结果：**WATCH（建议关注）**，**P(WATCH) ≈ 0.758**\n- 不确定性：概率未经校准，不保证未来真实风险；且标签来自合成数据，**不能推断已验证的真实植物风险**。约 24% 的概率为不关注，属于“倾向关注但非确定”\n\n## 二、当前环境状态（SIMULATED，演示模拟，非真实观测）\n- 温度 24 ℃、空气湿度 65%、光照 12000\n- 来源类型为 SIMULATED，因此这些数值只是演示数据，不能当作真实室内传感器实测；也不能据此断言真实环境的趋势\n- 注意：空气湿度 ≠ 土壤湿度，这里的 65% 不能说明盆土是否干湿\n\n## 三、天气预报（未取得）\n- `get_weather_forecast(北京)` 返回 **status=unavailable**，来源 OPEN_METEO，报错“天气API网络请求失败，未来12小时预报证据缺失”\n- 因此**本次回答没有北京未来 12 小时的任何天气数据**，我无法据此判断降温、降雨或光照变化对绿萝的影响，不做推测填补\n\n## 四、本地养护知识（LOCAL_KNOWLEDGE，检索到匹配条目）\n绿萝：\n- 光照：半阴，明亮散射光\n- 浇水频率：7–10 天（知识明确注明“仅参考，以盆土干湿为准”）\n- 要点：喜湿润但怕积水；浇水前检查盆土，表层干燥后再浇透，及时倒掉托盘积水；低温或光照较弱时减少浇水，避免烈日直晒\n\n（同时检索到“发财树”条目，与你的植物不符，未采用。）\n\n## 五、历史证据（本次未调用）\n- 你只要求天气与养护知识，我未读取历史样本；因此**历史趋势证据在本次回答中缺失**，不对 7 天或近 24 小时情况做任何说明\n\n## 六、结论与建议\n- 模型给出 P(WATCH)=0.758，倾向“接下来一小时值得关注”，但它指向的是 10:00 之后那 60 分钟，且基于合成数据，**不构成真实风险判断**\n- 天气证据完全缺失，无法评估北京室外变化对室内绿萝的影响\n- 按绿萝知识，是否需要浇水取决于**盆土干湿**，而非温度、空气湿度或模型概率；当前也没有盆土湿度数据\n- 因此：**不要仅凭这次预测就去浇水**。可行做法是先亲手检查盆土表层是否干燥，并观察叶片状态；如需补充判断，可再查历史数据或在天气服务恢复后重取预报。本次没有任何写操作能力，环境未被修改。\n\n工具证据记录：\n- 第3次调用的未来12小时天气预报证据缺失（unavailable）：天气API网络请求失败，未来12小时预报证据缺失。",
+        "tool_calls": [
+          {
+            "sequence": 1,
+            "tool": "predict_next_attention",
+            "arguments": {},
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "source": "MODEL_OUTPUT",
+              "time": "2026-10-21T10:11:50.602137+00:00",
+              "data": {
+                "status": "ok",
+                "prediction": "WATCH",
+                "probability": 0.758076335540599,
+                "model_version": "attention_v1",
+                "window_start": "2026-10-21T07:30:00+00:00",
+                "window_end": "2026-10-21T10:00:00+00:00",
+                "source_type": "SIMULATED",
+                "evidence_type": "MODEL_OUTPUT",
+                "error": null,
+                "probability_of": "WATCH",
+                "horizon": 2,
+                "horizon_minutes": 60,
+                "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。"
+              },
+              "error": null
+            },
+            "elapsed_ms": 25.331
+          },
+          {
+            "sequence": 2,
+            "tool": "get_current_environment",
+            "arguments": {},
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "source": "SIMULATED",
+              "time": "2026-10-21T10:11:50.602447+00:00",
+              "data": {
+                "temperature": 24,
+                "humidity": 65,
+                "light": 12000,
+                "source_type": "SIMULATED",
+                "timestamp": "2026-10-21T10:11:03.726064+00:00"
+              },
+              "error": null
+            },
+            "elapsed_ms": 0.15
+          },
+          {
+            "sequence": 3,
+            "tool": "get_weather_forecast",
+            "arguments": {
+              "location": "北京"
+            },
+            "status": "unavailable",
+            "result": {
+              "status": "unavailable",
+              "source": "OPEN_METEO",
+              "time": "2026-10-21T10:11:55.615589+00:00",
+              "data": {},
+              "error": "天气API网络请求失败，未来12小时预报证据缺失。"
+            },
+            "elapsed_ms": 5016.299
+          },
+          {
+            "sequence": 4,
+            "tool": "search_plant_knowledge",
+            "arguments": {
+              "query": "绿萝 养护 浇水 光照 空气湿度"
+            },
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "source": "LOCAL_KNOWLEDGE",
+              "time": "2026-10-21T10:11:55.937212+00:00",
+              "data": {
+                "query": "绿萝 养护 浇水 光照 空气湿度",
+                "items": [
+                  {
+                    "name": "绿萝",
+                    "light": "半阴，明亮散射光",
+                    "water_freq": "7-10天（仅参考，以盆土干湿为准）",
+                    "tips": "喜湿润但怕积水。浇水前检查盆土，表层干燥后再浇透，及时倒掉托盘积水；低温或光照较弱时减少浇水，避免烈日直晒。"
+                  },
+                  {
+                    "name": "发财树",
+                    "light": "明亮散射光",
+                    "water_freq": "盆土上层干燥后再浇，不固定天数",
+                    "tips": "浇水应根据盆土干湿决定，盆器要排水良好，避免长期积水；低温、弱光时减少浇水，避免突然放到烈日下。"
+                  }
+                ]
+              },
+              "error": null
+            },
+            "elapsed_ms": 318.293
+          }
+        ],
+        "iterations": 2
+      }
+    },
+    {
+      "run": 3,
+      "http_status": 502,
+      "normal_answer": false,
+      "prediction_weather_knowledge_tools_present": true,
+      "result": {
+        "answer": "模型调用失败，请检查网络及平台的tools支持情况。\n\n工具证据记录：\n- 第2次调用的未来12小时天气预报证据缺失（unavailable）：天气API网络请求失败，未来12小时预报证据缺失。",
+        "tool_calls": [
+          {
+            "sequence": 1,
+            "tool": "predict_next_attention",
+            "arguments": {},
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "source": "MODEL_OUTPUT",
+              "time": "2026-10-21T10:12:16.333641+00:00",
+              "data": {
+                "status": "ok",
+                "prediction": "WATCH",
+                "probability": 0.758076335540599,
+                "model_version": "attention_v1",
+                "window_start": "2026-10-21T07:30:00+00:00",
+                "window_end": "2026-10-21T10:00:00+00:00",
+                "source_type": "SIMULATED",
+                "evidence_type": "MODEL_OUTPUT",
+                "error": null,
+                "probability_of": "WATCH",
+                "horizon": 2,
+                "horizon_minutes": 60,
+                "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。"
+              },
+              "error": null
+            },
+            "elapsed_ms": 37.945
+          },
+          {
+            "sequence": 2,
+            "tool": "get_weather_forecast",
+            "arguments": {
+              "location": "北京"
+            },
+            "status": "unavailable",
+            "result": {
+              "status": "unavailable",
+              "source": "OPEN_METEO",
+              "time": "2026-10-21T10:12:21.342719+00:00",
+              "data": {},
+              "error": "天气API网络请求失败，未来12小时预报证据缺失。"
+            },
+            "elapsed_ms": 5021.511
+          },
+          {
+            "sequence": 3,
+            "tool": "get_current_environment",
+            "arguments": {},
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "source": "SIMULATED",
+              "time": "2026-10-21T10:12:21.356775+00:00",
+              "data": {
+                "temperature": 24,
+                "humidity": 65,
+                "light": 12000,
+                "source_type": "SIMULATED",
+                "timestamp": "2026-10-21T10:11:03.726064+00:00"
+              },
+              "error": null
+            },
+            "elapsed_ms": 1.122
+          },
+          {
+            "sequence": 4,
+            "tool": "search_plant_knowledge",
+            "arguments": {
+              "query": "绿萝 养护 浇水 光照 湿度"
+            },
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "source": "LOCAL_KNOWLEDGE",
+              "time": "2026-10-21T10:12:21.558361+00:00",
+              "data": {
+                "query": "绿萝 养护 浇水 光照 湿度",
+                "items": [
+                  {
+                    "name": "绿萝",
+                    "light": "半阴，明亮散射光",
+                    "water_freq": "7-10天（仅参考，以盆土干湿为准）",
+                    "tips": "喜湿润但怕积水。浇水前检查盆土，表层干燥后再浇透，及时倒掉托盘积水；低温或光照较弱时减少浇水，避免烈日直晒。"
+                  },
+                  {
+                    "name": "仙人掌",
+                    "light": "常见沙漠型仙人掌喜阳，需要充足光照",
+                    "water_freq": "生长期盆土干透后再浇，低温休眠期减少浇水",
+                    "tips": "常见沙漠型仙人掌喜阳、耐旱、怕积水。浇水应干透再浇，基质要透气排水；从弱光处移到强光处要逐步适应。蟹爪兰等森林型仙人掌是例外，更喜散射光，不能一概暴晒。"
+                  }
+                ]
+              },
+              "error": null
+            },
+            "elapsed_ms": 201.399
+          },
+          {
+            "sequence": 5,
+            "tool": "get_environment_history",
+            "arguments": {
+              "hours": 24
+            },
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "source": "SIMULATED",
+              "time": "2026-10-21T10:12:21.559877+00:00",
+              "data": {
+                "hours": 24,
+                "items": [
+                  {
+                    "id": 289,
+                    "timestamp": "2026-10-20T10:30:00+00:00",
+                    "temperature": 26.39,
+                    "humidity": 62.49,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 290,
+                    "timestamp": "2026-10-20T11:00:00+00:00",
+                    "temperature": 25.3,
+                    "humidity": 60.21,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 291,
+                    "timestamp": "2026-10-20T11:30:00+00:00",
+                    "temperature": 26.02,
+                    "humidity": 61.64,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 292,
+                    "timestamp": "2026-10-20T12:00:00+00:00",
+                    "temperature": 23.85,
+                    "humidity": 63.95,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 293,
+                    "timestamp": "2026-10-20T12:30:00+00:00",
+                    "temperature": 24.13,
+                    "humidity": 67.2,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 294,
+                    "timestamp": "2026-10-20T13:00:00+00:00",
+                    "temperature": 22.39,
+                    "humidity": 68.51,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 295,
+                    "timestamp": "2026-10-20T13:30:00+00:00",
+                    "temperature": 22.69,
+                    "humidity": 69.11,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 296,
+                    "timestamp": "2026-10-20T14:00:00+00:00",
+                    "temperature": 21.51,
+                    "humidity": 69.91,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 297,
+                    "timestamp": "2026-10-20T14:30:00+00:00",
+                    "temperature": 21.39,
+                    "humidity": 72.34,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 298,
+                    "timestamp": "2026-10-20T15:00:00+00:00",
+                    "temperature": 20.96,
+                    "humidity": 74.59,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 299,
+                    "timestamp": "2026-10-20T15:30:00+00:00",
+                    "temperature": 20.45,
+                    "humidity": 71.92,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 300,
+                    "timestamp": "2026-10-20T16:00:00+00:00",
+                    "temperature": 20.24,
+                    "humidity": 77.42,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 301,
+                    "timestamp": "2026-10-20T16:30:00+00:00",
+                    "temperature": 20.08,
+                    "humidity": 79.6,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 302,
+                    "timestamp": "2026-10-20T17:00:00+00:00",
+                    "temperature": 20.33,
+                    "humidity": 74.84,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 303,
+                    "timestamp": "2026-10-20T17:30:00+00:00",
+                    "temperature": 19.7,
+                    "humidity": 77.26,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 304,
+                    "timestamp": "2026-10-20T18:00:00+00:00",
+                    "temperature": 19.53,
+                    "humidity": 80.56,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 305,
+                    "timestamp": "2026-10-20T18:30:00+00:00",
+                    "temperature": 19.64,
+                    "humidity": 77.92,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 306,
+                    "timestamp": "2026-10-20T19:00:00+00:00",
+                    "temperature": 20.72,
+                    "humidity": 76.43,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 307,
+                    "timestamp": "2026-10-20T19:30:00+00:00",
+                    "temperature": 19.91,
+                    "humidity": 75.68,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 308,
+                    "timestamp": "2026-10-20T20:00:00+00:00",
+                    "temperature": 20.68,
+                    "humidity": 76.71,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 309,
+                    "timestamp": "2026-10-20T20:30:00+00:00",
+                    "temperature": 20.85,
+                    "humidity": 72.42,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 310,
+                    "timestamp": "2026-10-20T21:00:00+00:00",
+                    "temperature": 21.19,
+                    "humidity": 72.48,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 311,
+                    "timestamp": "2026-10-20T21:30:00+00:00",
+                    "temperature": 20.69,
+                    "humidity": 71.26,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 312,
+                    "timestamp": "2026-10-20T22:00:00+00:00",
+                    "temperature": 21.43,
+                    "humidity": 71.88,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 313,
+                    "timestamp": "2026-10-20T22:30:00+00:00",
+                    "temperature": 23.25,
+                    "humidity": 72.38,
+                    "light": 2148.85,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 314,
+                    "timestamp": "2026-10-20T23:00:00+00:00",
+                    "temperature": 22.78,
+                    "humidity": 69.14,
+                    "light": 5030.19,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 315,
+                    "timestamp": "2026-10-20T23:30:00+00:00",
+                    "temperature": 23.31,
+                    "humidity": 66.35,
+                    "light": 7660.73,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 316,
+                    "timestamp": "2026-10-21T00:00:00+00:00",
+                    "temperature": 23.96,
+                    "humidity": 64.27,
+                    "light": 9041.97,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 317,
+                    "timestamp": "2026-10-21T00:30:00+00:00",
+                    "temperature": 24.75,
+                    "humidity": 61.9,
+                    "light": 10870.76,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 318,
+                    "timestamp": "2026-10-21T01:00:00+00:00",
+                    "temperature": 24.57,
+                    "humidity": 61.48,
+                    "light": 13384.85,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 319,
+                    "timestamp": "2026-10-21T01:30:00+00:00",
+                    "temperature": 25.83,
+                    "humidity": 60.27,
+                    "light": 13953.77,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 320,
+                    "timestamp": "2026-10-21T02:00:00+00:00",
+                    "temperature": 25.88,
+                    "humidity": 60.58,
+                    "light": 15391.87,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 321,
+                    "timestamp": "2026-10-21T02:30:00+00:00",
+                    "temperature": 27.02,
+                    "humidity": 55.63,
+                    "light": 16528.32,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 322,
+                    "timestamp": "2026-10-21T03:00:00+00:00",
+                    "temperature": 27.53,
+                    "humidity": 53.5,
+                    "light": 17802.61,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 323,
+                    "timestamp": "2026-10-21T03:30:00+00:00",
+                    "temperature": 26.43,
+                    "humidity": 55.34,
+                    "light": 17785.62,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 324,
+                    "timestamp": "2026-10-21T04:00:00+00:00",
+                    "temperature": 27.79,
+                    "humidity": 49.88,
+                    "light": 17328.77,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 325,
+                    "timestamp": "2026-10-21T04:30:00+00:00",
+                    "temperature": 27.47,
+                    "humidity": 53.97,
+                    "light": 17533.38,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 326,
+                    "timestamp": "2026-10-21T05:00:00+00:00",
+                    "temperature": 27.78,
+                    "humidity": 51.63,
+                    "light": 17246.22,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 327,
+                    "timestamp": "2026-10-21T05:30:00+00:00",
+                    "temperature": 27.63,
+                    "humidity": 53.47,
+                    "light": 16833.33,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 328,
+                    "timestamp": "2026-10-21T06:00:00+00:00",
+                    "temperature": 28.57,
+                    "humidity": 52.02,
+                    "light": 15477.16,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 329,
+                    "timestamp": "2026-10-21T06:30:00+00:00",
+                    "temperature": 27.98,
+                    "humidity": 52.66,
+                    "light": 14262.16,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 330,
+                    "timestamp": "2026-10-21T07:00:00+00:00",
+                    "temperature": 27.24,
+                    "humidity": 53.97,
+                    "light": 12407.61,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 331,
+                    "timestamp": "2026-10-21T07:30:00+00:00",
+                    "temperature": 27.31,
+                    "humidity": 51.53,
+                    "light": 11364.06,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 332,
+                    "timestamp": "2026-10-21T08:00:00+00:00",
+                    "temperature": 27.41,
+                    "humidity": 56.33,
+                    "light": 9095.31,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 333,
+                    "timestamp": "2026-10-21T08:30:00+00:00",
+                    "temperature": 26.49,
+                    "humidity": 53.85,
+                    "light": 7153.58,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 334,
+                    "timestamp": "2026-10-21T09:00:00+00:00",
+                    "temperature": 26.52,
+                    "humidity": 54.88,
+                    "light": 4595.96,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 335,
+                    "timestamp": "2026-10-21T09:30:00+00:00",
+                    "temperature": 26.36,
+                    "humidity": 56.18,
+                    "light": 2235.32,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 336,
+                    "timestamp": "2026-10-21T10:00:00+00:00",
+                    "temperature": 25.81,
+                    "humidity": 55.12,
+                    "light": 175.93,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  }
+                ],
+                "count": 48
+              },
+              "error": null
+            },
+            "elapsed_ms": 1.157
+          }
+        ],
+        "iterations": 2,
+        "llm_error": {
+          "status_code": null,
+          "message": "模型调用失败，请检查网络及平台的tools支持情况。"
+        }
+      }
+    },
+    {
+      "run": 4,
+      "http_status": 502,
+      "normal_answer": false,
+      "prediction_weather_knowledge_tools_present": false,
+      "result": {
+        "answer": "模型调用失败，请检查网络及平台的tools支持情况。",
+        "tool_calls": [],
+        "iterations": 1,
+        "llm_error": {
+          "status_code": null,
+          "message": "模型调用失败，请检查网络及平台的tools支持情况。"
+        }
+      }
+    },
+    {
+      "run": 5,
+      "http_status": 200,
+      "normal_answer": true,
+      "prediction_weather_knowledge_tools_present": true,
+      "result": {
+        "answer": "## 结论（先给判断）\n\n模型预测倾向“需要关注”（WATCH），但**这一预测所依据的只有 SIMULATED 合成数据和 RULE_v1 规则标签，不能据此断定真实绿萝存在风险**；北京未来 12 小时的**天气证据本次未取得**，因此“结合天气”这一项只能标注为缺失，不能补推。是否浇水等动作，须由你实地检查盆土后再决定。\n\n## 一、模型预测证据（MODEL_OUTPUT）\n\n| 项目 | 内容 |\n|---|---|\n| 模型版本 | attention_v1 |\n| 预测起点（窗口结束） | 2026-10-21T10:00:00+00:00 |\n| 预测窗口 | 07:30–10:00 UTC |\n| 预测范围 | window_end 之后 60 分钟（horizon_minutes=60） |\n| 预测标签 | WATCH |\n| P(WATCH) | 约 0.758 |\n| 证据类型 / 数据来源 | MODEL_OUTPUT / SIMULATED（RULE_v1 规则标签） |\n\n不确定性说明：\n- 该概率**未经校准**，模型仅在合成数据与规则标签上训练，0.758 只表示“在这套模拟设定下的规则倾向”，**不等于真实植物出问题的概率**；\n- 预测针对的是 window_end（10:00 UTC）之后的 1 小时，并非“现在这一小时”，也不应被描述成请求时刻的未来一小时；\n- 窗口结束到当前请求时刻之间已有间隔，时效性有限；这属于模型输出缺失之外的另一层不确定性。\n\n## 二、当前状态与历史（演示模拟，非真实观测）\n\n- 当前读数（SIMULATED）：温度 24 ℃、空气湿度 65 %、光照 12000，时间戳 10:11。\n- 24 小时历史：48 条，`sim_scenario=seed_demo`，全部为**演示模拟数据**，不能当成真实观测，也不能据此断言真实环境的 7 天或日内趋势。\n- 可以注意的只是模拟序列内的相对变化（非真实结论）：温湿度从午后到夜间偏高湿、随后白天升温降湿，光照在 09:30→10:00 明显下降。\n- **注意：空气湿度不等于土壤湿度**，以上任何数值都不能替代盆土干湿判断。\n\n## 三、天气证据（缺失）\n\n- `get_weather_forecast`（北京）：status=**unavailable**，OPEN_METEO 网络请求失败，**未来 12 小时逐小时预报缺失**。\n- 因此无法用预报说明即将到来的降温、降雨或干燥空气对绿萝的影响，这部分我在结论中不作任何推断性补充。\n\n## 四、本地养护知识证据（已检索到，与绿萝相符）\n\n检索到“绿萝”条目（LOCAL_KNOWLEDGE）：\n- 光照：半阴，明亮散射光；\n- 浇水频率：7–10 天仅为参考，**以盆土干湿为准**；\n- 要点：喜湿润但怕积水；浇水前检查盆土，表层干燥后浇透，及时倒掉托盘积水；低温或光照较弱时减少浇水，避免烈日直晒。\n\n（同次还返回“发财树”条目，与本问题植物不符，不予采用。）\n\n## 五、综合与建议（区分证据强度）\n\n1. **模型侧**：倾向 WATCH（P≈0.758），但因合成数据、规则标签与未校准，只能当作“值得去看一眼”的提示。\n2. **天气侧**：无证据，天气因素未纳入判断。\n3. **知识侧**：绿萝要“看盆土说话”，怕积水、怕烈日直晒；当前模拟光照约 12000（非天气实测光照），若真实光照偏强，需留意避免直晒。\n4. **行动建议**：请用眼睛/手指检查盆土表层与盆器重量，托盘有无积水；**不要仅凭模型预测就浇水**。土壤偏湿时保持通风、暂不浇水；表层确实干燥再按绿萝知识浇透并倒掉托盘积水。\n\n## 六、本次未取得的证据（明确缺失项）\n\n- **北京未来 12 小时天气预报：缺失**（API 不可用，无法替代）；\n- 真实室内传感器实测：未取得（当前与历史均为 SIMULATED/seed_demo）；\n- **盆土湿度、盆器排水情况：无任何工具数据**，须人工检查；\n- 模型预测不能覆盖天气、历史与知识证据，本次未做任何写操作，也未修改环境。\n\n工具证据记录：\n- 第3次调用的未来12小时天气预报证据缺失（unavailable）：天气API网络请求失败，未来12小时预报证据缺失。",
+        "tool_calls": [
+          {
+            "sequence": 1,
+            "tool": "predict_next_attention",
+            "arguments": {},
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "source": "MODEL_OUTPUT",
+              "time": "2026-10-21T10:13:13.188963+00:00",
+              "data": {
+                "status": "ok",
+                "prediction": "WATCH",
+                "probability": 0.758076335540599,
+                "model_version": "attention_v1",
+                "window_start": "2026-10-21T07:30:00+00:00",
+                "window_end": "2026-10-21T10:00:00+00:00",
+                "source_type": "SIMULATED",
+                "evidence_type": "MODEL_OUTPUT",
+                "error": null,
+                "probability_of": "WATCH",
+                "horizon": 2,
+                "horizon_minutes": 60,
+                "limitations": "仅基于SIMULATED合成数据与RULE_v1规则标签；概率未经校准，不保证未来真实风险。预测起点是window_end，不是请求时刻；需另查历史、天气与养护知识。"
+              },
+              "error": null
+            },
+            "elapsed_ms": 34.278
+          },
+          {
+            "sequence": 2,
+            "tool": "get_current_environment",
+            "arguments": {},
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "source": "SIMULATED",
+              "time": "2026-10-21T10:13:13.189592+00:00",
+              "data": {
+                "temperature": 24,
+                "humidity": 65,
+                "light": 12000,
+                "source_type": "SIMULATED",
+                "timestamp": "2026-10-21T10:11:03.726064+00:00"
+              },
+              "error": null
+            },
+            "elapsed_ms": 0.222
+          },
+          {
+            "sequence": 3,
+            "tool": "get_weather_forecast",
+            "arguments": {
+              "location": "北京"
+            },
+            "status": "unavailable",
+            "result": {
+              "status": "unavailable",
+              "source": "OPEN_METEO",
+              "time": "2026-10-21T10:13:18.206730+00:00",
+              "data": {},
+              "error": "天气API网络请求失败，未来12小时预报证据缺失。"
+            },
+            "elapsed_ms": 5017.528
+          },
+          {
+            "sequence": 4,
+            "tool": "search_plant_knowledge",
+            "arguments": {
+              "query": "绿萝 养护 浇水 光照 空气湿度"
+            },
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "source": "LOCAL_KNOWLEDGE",
+              "time": "2026-10-21T10:13:18.411909+00:00",
+              "data": {
+                "query": "绿萝 养护 浇水 光照 空气湿度",
+                "items": [
+                  {
+                    "name": "绿萝",
+                    "light": "半阴，明亮散射光",
+                    "water_freq": "7-10天（仅参考，以盆土干湿为准）",
+                    "tips": "喜湿润但怕积水。浇水前检查盆土，表层干燥后再浇透，及时倒掉托盘积水；低温或光照较弱时减少浇水，避免烈日直晒。"
+                  },
+                  {
+                    "name": "发财树",
+                    "light": "明亮散射光",
+                    "water_freq": "盆土上层干燥后再浇，不固定天数",
+                    "tips": "浇水应根据盆土干湿决定，盆器要排水良好，避免长期积水；低温、弱光时减少浇水，避免突然放到烈日下。"
+                  }
+                ]
+              },
+              "error": null
+            },
+            "elapsed_ms": 204.502
+          },
+          {
+            "sequence": 5,
+            "tool": "get_environment_history",
+            "arguments": {
+              "hours": 24
+            },
+            "status": "ok",
+            "result": {
+              "status": "ok",
+              "source": "SIMULATED",
+              "time": "2026-10-21T10:13:18.412724+00:00",
+              "data": {
+                "hours": 24,
+                "items": [
+                  {
+                    "id": 289,
+                    "timestamp": "2026-10-20T10:30:00+00:00",
+                    "temperature": 26.39,
+                    "humidity": 62.49,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 290,
+                    "timestamp": "2026-10-20T11:00:00+00:00",
+                    "temperature": 25.3,
+                    "humidity": 60.21,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 291,
+                    "timestamp": "2026-10-20T11:30:00+00:00",
+                    "temperature": 26.02,
+                    "humidity": 61.64,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 292,
+                    "timestamp": "2026-10-20T12:00:00+00:00",
+                    "temperature": 23.85,
+                    "humidity": 63.95,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 293,
+                    "timestamp": "2026-10-20T12:30:00+00:00",
+                    "temperature": 24.13,
+                    "humidity": 67.2,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 294,
+                    "timestamp": "2026-10-20T13:00:00+00:00",
+                    "temperature": 22.39,
+                    "humidity": 68.51,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 295,
+                    "timestamp": "2026-10-20T13:30:00+00:00",
+                    "temperature": 22.69,
+                    "humidity": 69.11,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 296,
+                    "timestamp": "2026-10-20T14:00:00+00:00",
+                    "temperature": 21.51,
+                    "humidity": 69.91,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 297,
+                    "timestamp": "2026-10-20T14:30:00+00:00",
+                    "temperature": 21.39,
+                    "humidity": 72.34,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 298,
+                    "timestamp": "2026-10-20T15:00:00+00:00",
+                    "temperature": 20.96,
+                    "humidity": 74.59,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 299,
+                    "timestamp": "2026-10-20T15:30:00+00:00",
+                    "temperature": 20.45,
+                    "humidity": 71.92,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 300,
+                    "timestamp": "2026-10-20T16:00:00+00:00",
+                    "temperature": 20.24,
+                    "humidity": 77.42,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 301,
+                    "timestamp": "2026-10-20T16:30:00+00:00",
+                    "temperature": 20.08,
+                    "humidity": 79.6,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 302,
+                    "timestamp": "2026-10-20T17:00:00+00:00",
+                    "temperature": 20.33,
+                    "humidity": 74.84,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 303,
+                    "timestamp": "2026-10-20T17:30:00+00:00",
+                    "temperature": 19.7,
+                    "humidity": 77.26,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 304,
+                    "timestamp": "2026-10-20T18:00:00+00:00",
+                    "temperature": 19.53,
+                    "humidity": 80.56,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 305,
+                    "timestamp": "2026-10-20T18:30:00+00:00",
+                    "temperature": 19.64,
+                    "humidity": 77.92,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 306,
+                    "timestamp": "2026-10-20T19:00:00+00:00",
+                    "temperature": 20.72,
+                    "humidity": 76.43,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 307,
+                    "timestamp": "2026-10-20T19:30:00+00:00",
+                    "temperature": 19.91,
+                    "humidity": 75.68,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 308,
+                    "timestamp": "2026-10-20T20:00:00+00:00",
+                    "temperature": 20.68,
+                    "humidity": 76.71,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 309,
+                    "timestamp": "2026-10-20T20:30:00+00:00",
+                    "temperature": 20.85,
+                    "humidity": 72.42,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 310,
+                    "timestamp": "2026-10-20T21:00:00+00:00",
+                    "temperature": 21.19,
+                    "humidity": 72.48,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 311,
+                    "timestamp": "2026-10-20T21:30:00+00:00",
+                    "temperature": 20.69,
+                    "humidity": 71.26,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 312,
+                    "timestamp": "2026-10-20T22:00:00+00:00",
+                    "temperature": 21.43,
+                    "humidity": 71.88,
+                    "light": 0.0,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 313,
+                    "timestamp": "2026-10-20T22:30:00+00:00",
+                    "temperature": 23.25,
+                    "humidity": 72.38,
+                    "light": 2148.85,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 314,
+                    "timestamp": "2026-10-20T23:00:00+00:00",
+                    "temperature": 22.78,
+                    "humidity": 69.14,
+                    "light": 5030.19,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 315,
+                    "timestamp": "2026-10-20T23:30:00+00:00",
+                    "temperature": 23.31,
+                    "humidity": 66.35,
+                    "light": 7660.73,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 316,
+                    "timestamp": "2026-10-21T00:00:00+00:00",
+                    "temperature": 23.96,
+                    "humidity": 64.27,
+                    "light": 9041.97,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 317,
+                    "timestamp": "2026-10-21T00:30:00+00:00",
+                    "temperature": 24.75,
+                    "humidity": 61.9,
+                    "light": 10870.76,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 318,
+                    "timestamp": "2026-10-21T01:00:00+00:00",
+                    "temperature": 24.57,
+                    "humidity": 61.48,
+                    "light": 13384.85,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 319,
+                    "timestamp": "2026-10-21T01:30:00+00:00",
+                    "temperature": 25.83,
+                    "humidity": 60.27,
+                    "light": 13953.77,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 320,
+                    "timestamp": "2026-10-21T02:00:00+00:00",
+                    "temperature": 25.88,
+                    "humidity": 60.58,
+                    "light": 15391.87,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 321,
+                    "timestamp": "2026-10-21T02:30:00+00:00",
+                    "temperature": 27.02,
+                    "humidity": 55.63,
+                    "light": 16528.32,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 322,
+                    "timestamp": "2026-10-21T03:00:00+00:00",
+                    "temperature": 27.53,
+                    "humidity": 53.5,
+                    "light": 17802.61,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 323,
+                    "timestamp": "2026-10-21T03:30:00+00:00",
+                    "temperature": 26.43,
+                    "humidity": 55.34,
+                    "light": 17785.62,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 324,
+                    "timestamp": "2026-10-21T04:00:00+00:00",
+                    "temperature": 27.79,
+                    "humidity": 49.88,
+                    "light": 17328.77,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 325,
+                    "timestamp": "2026-10-21T04:30:00+00:00",
+                    "temperature": 27.47,
+                    "humidity": 53.97,
+                    "light": 17533.38,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 326,
+                    "timestamp": "2026-10-21T05:00:00+00:00",
+                    "temperature": 27.78,
+                    "humidity": 51.63,
+                    "light": 17246.22,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 327,
+                    "timestamp": "2026-10-21T05:30:00+00:00",
+                    "temperature": 27.63,
+                    "humidity": 53.47,
+                    "light": 16833.33,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 328,
+                    "timestamp": "2026-10-21T06:00:00+00:00",
+                    "temperature": 28.57,
+                    "humidity": 52.02,
+                    "light": 15477.16,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 329,
+                    "timestamp": "2026-10-21T06:30:00+00:00",
+                    "temperature": 27.98,
+                    "humidity": 52.66,
+                    "light": 14262.16,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 330,
+                    "timestamp": "2026-10-21T07:00:00+00:00",
+                    "temperature": 27.24,
+                    "humidity": 53.97,
+                    "light": 12407.61,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 331,
+                    "timestamp": "2026-10-21T07:30:00+00:00",
+                    "temperature": 27.31,
+                    "humidity": 51.53,
+                    "light": 11364.06,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 332,
+                    "timestamp": "2026-10-21T08:00:00+00:00",
+                    "temperature": 27.41,
+                    "humidity": 56.33,
+                    "light": 9095.31,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 333,
+                    "timestamp": "2026-10-21T08:30:00+00:00",
+                    "temperature": 26.49,
+                    "humidity": 53.85,
+                    "light": 7153.58,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 334,
+                    "timestamp": "2026-10-21T09:00:00+00:00",
+                    "temperature": 26.52,
+                    "humidity": 54.88,
+                    "light": 4595.96,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 335,
+                    "timestamp": "2026-10-21T09:30:00+00:00",
+                    "temperature": 26.36,
+                    "humidity": 56.18,
+                    "light": 2235.32,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  },
+                  {
+                    "id": 336,
+                    "timestamp": "2026-10-21T10:00:00+00:00",
+                    "temperature": 25.81,
+                    "humidity": 55.12,
+                    "light": 175.93,
+                    "source_type": "SIMULATED",
+                    "sim_scenario": "seed_demo"
+                  }
+                ],
+                "count": 48
+              },
+              "error": null
+            },
+            "elapsed_ms": 0.672
+          }
+        ],
+        "iterations": 2
+      }
+    }
+  ],
+  "normal_count": 3,
+  "environment_samples_unchanged": true,
+  "passed_4_of_5": false,
+  "finished_at": "2026-10-21T10:13:38.043683+00:00"
+}

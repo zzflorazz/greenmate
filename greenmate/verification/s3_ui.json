@@ -1,0 +1,13 @@
+{
+  "mode": "isolated_db_real_api_and_saved_model_with_explicit_weather_and_llm_ui_fixtures",
+  "checks": [
+    "same_question_and_same_internal_s1",
+    "side_by_side_future_weather_metadata_adjustment_and_answer",
+    "archived_evidence_identical_and_forecast_not_past",
+    "run_id_lookup",
+    "mobile_no_page_overflow",
+    "offline_friendly_error_preserves_comparison"
+  ],
+  "page_errors": [],
+  "passed": true
+}

@@ -1,0 +1,12 @@
+{
+  "mode": "offline_ui_forecast_and_llm_fixtures_real_b05_knowledge_and_b06_model",
+  "checks": [
+    "five_evidence_cards_identity_citations_adoption_trace_conflict_level_and_explanation",
+    "mobile_no_page_overflow",
+    "knowledge_off_unavailable_and_not_called",
+    "archive_lookup_restores_original_trace",
+    "network_failure_preserves_archive_display"
+  ],
+  "passed": true,
+  "page_errors": []
+}

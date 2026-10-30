@@ -1,0 +1,10 @@
+{
+  "mode": "reused_existing_stable_segment",
+  "analysis_time": "2026-10-21T12:23:43.782334+00:00",
+  "location": "北京",
+  "history_start": "2026-10-21T09:23:43.782334+00:00",
+  "history_end": "2026-10-21T12:23:43.782334+00:00",
+  "sample_count": 6,
+  "source_type": "SIMULATED",
+  "note": "只准备稳定模拟段；不训练、不调整WATCH/NORMAL。旧样本保留。"
+}

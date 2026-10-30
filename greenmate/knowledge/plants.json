@@ -1,0 +1,69 @@
+[
+  {
+    "name": "绿萝",
+    "light": "半阴，明亮散射光",
+    "water_freq": "7-10天（仅参考，以盆土干湿为准）",
+    "tips": "喜湿润但怕积水。浇水前检查盆土，表层干燥后再浇透，及时倒掉托盘积水；低温或光照较弱时减少浇水，避免烈日直晒。",
+    "id": "pothos_care_01"
+  },
+  {
+    "name": "多肉",
+    "light": "多数常见沙漠型多肉喜阳，逐步适应充足光照",
+    "water_freq": "盆土干透后再浇，不固定天数",
+    "tips": "多肉包含许多种类，常见沙漠型多肉耐旱、怕积水。浇水要干透浇透，使用排水良好的基质；休眠时减少浇水，夏季避免突然暴晒。不同品种的光照和休眠习性不同。",
+    "id": "succulent_care_01"
+  },
+  {
+    "name": "龟背竹",
+    "light": "明亮散射光，避免强烈直晒",
+    "water_freq": "盆土上层干燥后再浇，不固定天数",
+    "tips": "喜温暖和较高空气湿度，浇水前检查盆土上层，干燥后浇透并排出积水；保持通风，避免盆土长期潮湿。",
+    "id": "monstera_care_01"
+  },
+  {
+    "name": "发财树",
+    "light": "明亮散射光",
+    "water_freq": "盆土上层干燥后再浇，不固定天数",
+    "tips": "浇水应根据盆土干湿决定，盆器要排水良好，避免长期积水；低温、弱光时减少浇水，避免突然放到烈日下。",
+    "id": "money_tree_care_01"
+  },
+  {
+    "name": "文竹",
+    "light": "明亮散射光，避免强烈直晒",
+    "water_freq": "表土略干时检查并补水，不固定天数",
+    "tips": "喜较高空气湿度，盆土保持适度湿润但不积水，避免完全干透；浇水与空气加湿不能互相替代，注意通风。",
+    "id": "asparagus_care_01"
+  },
+  {
+    "name": "仙人掌",
+    "light": "常见沙漠型仙人掌喜阳，需要充足光照",
+    "water_freq": "生长期盆土干透后再浇，低温休眠期减少浇水",
+    "tips": "常见沙漠型仙人掌喜阳、耐旱、怕积水。浇水应干透再浇，基质要透气排水；从弱光处移到强光处要逐步适应。蟹爪兰等森林型仙人掌是例外，更喜散射光，不能一概暴晒。",
+    "id": "cactus_care_01"
+  },
+  {
+    "id": "tomato_heat_01",
+    "name": "番茄",
+    "temperature": "温室白天约24–27°C；晴天后夜间约17–18°C，阴天后约16–17°C。品种、生育期和栽培方式会影响适用性。",
+    "humidity": "温室番茄空气相对湿度约60–70%可作参考；需结合生育期、昼夜、通风与结露检查，不能代替土壤含水量。",
+    "light": "喜充足光照；露地每天至少6小时直射光。瞬时lux读数不能替代日光时长或日光积分。",
+    "water_freq": "按根区含水状况、栽培方式和生育期检查，不设固定浇水周期。",
+    "tips": "温室高温时关注通风与遮阴，资料建议尽量维持低于约29.4°C（85°F）；这是条件性管理参考，不是病害判定阈值。内部近期升温且光照较强时，应核对内部后续读数与通风情况；户外预报降温不能直接证明内部同步降温。",
+    "high_temperature_risk": "温室升温与强光组合提示需要检查热负荷及通风条件，不代表已经发生伤害；未来变化还缺内部后续实测、品种及生育期证据。",
+    "heat_attention_c": 29.4,
+    "references": [
+      {
+        "title": "UMass / New England Vegetable Management Guide: Tomato, Greenhouse and High Tunnel",
+        "url": "https://nevegetable.org/crops/tomato-greenhouse-and-high-tunnel"
+      },
+      {
+        "title": "University of Maryland Extension: Growing Tomatoes in a Home Garden",
+        "url": "https://www.extension.umd.edu/resource/growing-tomatoes-home-garden"
+      },
+      {
+        "title": "Mississippi State University Extension: Greenhouse Tomato Handbook",
+        "url": "https://extension.msstate.edu/sites/default/files/publications/publications/p1828_web.pdf"
+      }
+    ]
+  }
+]

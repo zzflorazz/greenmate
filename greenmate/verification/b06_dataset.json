@@ -1,0 +1,120 @@
+{
+  "window_6": {
+    "window_size": 6,
+    "horizon": 2,
+    "feature_names": [
+      "temp_current",
+      "temp_mean",
+      "temp_delta",
+      "hum_current",
+      "hum_mean",
+      "hum_delta",
+      "light_current",
+      "light_delta"
+    ],
+    "label_source": "RULE_v1",
+    "split_time": "2026-10-19T09:30:00+00:00",
+    "original_row_count": 336,
+    "train": {
+      "count": 233,
+      "class_distribution": {
+        "NORMAL": 118,
+        "WATCH": 115
+      },
+      "time_range": {
+        "start": "2026-10-14T09:30:00+00:00",
+        "end": "2026-10-19T09:00:00+00:00"
+      }
+    },
+    "test": {
+      "count": 89,
+      "class_distribution": {
+        "NORMAL": 46,
+        "WATCH": 43
+      },
+      "time_range": {
+        "start": "2026-10-19T09:30:00+00:00",
+        "end": "2026-10-21T09:00:00+00:00"
+      }
+    }
+  },
+  "window_4": {
+    "window_size": 4,
+    "horizon": 2,
+    "feature_names": [
+      "temp_current",
+      "temp_mean",
+      "temp_delta",
+      "hum_current",
+      "hum_mean",
+      "hum_delta",
+      "light_current",
+      "light_delta"
+    ],
+    "label_source": "RULE_v1",
+    "split_time": "2026-10-19T09:30:00+00:00",
+    "original_row_count": 336,
+    "train": {
+      "count": 235,
+      "class_distribution": {
+        "NORMAL": 118,
+        "WATCH": 117
+      },
+      "time_range": {
+        "start": "2026-10-14T09:30:00+00:00",
+        "end": "2026-10-19T09:00:00+00:00"
+      }
+    },
+    "test": {
+      "count": 91,
+      "class_distribution": {
+        "NORMAL": 46,
+        "WATCH": 45
+      },
+      "time_range": {
+        "start": "2026-10-19T09:30:00+00:00",
+        "end": "2026-10-21T09:00:00+00:00"
+      }
+    }
+  },
+  "trace_example": {
+    "sample_id": "w6-h2:1,2,3,4,5,6,7,8",
+    "split": "train",
+    "window_start": "2026-10-14T09:30:00+00:00",
+    "window_end": "2026-10-14T12:00:00+00:00",
+    "future_start": "2026-10-14T12:30:00+00:00",
+    "future_end": "2026-10-14T13:00:00+00:00",
+    "input_sample_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "input_timestamps": [
+      "2026-10-14T09:30:00+00:00",
+      "2026-10-14T10:00:00+00:00",
+      "2026-10-14T10:30:00+00:00",
+      "2026-10-14T11:00:00+00:00",
+      "2026-10-14T11:30:00+00:00",
+      "2026-10-14T12:00:00+00:00"
+    ],
+    "future_sample_ids": [
+      7,
+      8
+    ],
+    "features": {
+      "temp_current": 24.26,
+      "temp_mean": 25.358333333333334,
+      "temp_delta": -2.1199999999999974,
+      "hum_current": 65.17,
+      "hum_mean": 61.446666666666665,
+      "hum_delta": 7.730000000000004,
+      "light_current": 0.0,
+      "light_delta": -2310.51
+    },
+    "label": "WATCH",
+    "label_source": "RULE_v1"
+  }
+}

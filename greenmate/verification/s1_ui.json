@@ -1,0 +1,16 @@
+{
+  "mode": "real_api_sqlite_model_program_judgment_with_scripted_explanation_ui_only",
+  "checks": [
+    "fixed_question_complete_analysis_and_evidence_display",
+    "full_snapshot_json_available",
+    "recent_list_exactly_five",
+    "closed_page_original_run_id_recalls_identical_snapshots",
+    "recent_run_click_recall",
+    "invalid_anchor_chinese_error",
+    "offline_keeps_existing_archive_visible",
+    "mobile_no_horizontal_overflow"
+  ],
+  "page_errors": [],
+  "passed": true,
+  "example_run_id": "run_20261021_122501_88984507bf44"
+}
