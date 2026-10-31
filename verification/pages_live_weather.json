@@ -1,0 +1,12 @@
+{
+  "mode": "real_existing_weather_api_environment_to_home_isolated_db_no_llm",
+  "weather_status": "已更新为真实户外天气。",
+  "state": {
+    "temperature": 10.4,
+    "humidity": 37,
+    "light": 12000,
+    "source_type": "REAL_WEATHER",
+    "timestamp": "2026-10-30T14:30:15.983433+00:00"
+  },
+  "passed": true
+}

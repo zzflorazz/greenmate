@@ -1,0 +1,5 @@
+const {chromium}=require('/Users/xiaoyi/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+(async()=>{const browser=await chromium.launch({headless:true,args:['--enable-unsafe-swiftshader'],executablePath:'/Users/xiaoyi/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell'});try{
+const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+for(const route of ['/','/environment','/conversation','/knowledge','/prediction','/analysis']){await page.goto('http://127.0.0.1:18118'+route);await page.waitForLoadState('networkidle');if(route==='/')await page.locator('.stage.is-live').waitFor();await page.screenshot({path:'verification/pages_'+(route.slice(1)||'home')+'.png'});console.log(JSON.stringify({route,overflow:await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),errors}));}
+}finally{await browser.close()}})().catch(e=>{console.error(e);process.exit(1)});

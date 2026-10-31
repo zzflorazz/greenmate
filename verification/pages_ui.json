@@ -1,0 +1,30 @@
+{
+  "mode": "real_six_page_api_state_sqlite_rag_model_scenarios_webgl_isolated_db_explicit_llm_weather_fixtures",
+  "checks": [
+    "six_routes_correct_nav_local_images_desktop_no_console_errors_or_overflow",
+    "home_only_hero_four_entries_actual_readings_one_time_number_animation",
+    "real_webgl_shadows_reflection_texture_at_most_120_draw_calls",
+    "raycast_plant_label_hover_scale_double_click_and_keyboard_reset",
+    "environment_switch_history_then_home_reads_same_persisted_weather_state",
+    "ordinary_agent_tool_evidence_and_sqlite_memory_controls",
+    "knowledge_listing_real_local_search_and_index_reload",
+    "persisted_model_prediction_and_saved_metrics",
+    "s1_s2_s3_s4_with_without_knowledge_general_analysis_and_run_lookup",
+    "all_six_pages_390px_no_horizontal_overflow",
+    "reduced_motion_disables_numbers_scene_sway_card_effect_and_banner_parallax",
+    "missing_photo_shows_gradient_svg_without_broken_image",
+    "failed_three_module_still_shows_svg_and_home_content",
+    "offline_page_action_reports_chinese_error"
+  ],
+  "scene": {
+    "calls": 91,
+    "shadow": true,
+    "env": [
+      512,
+      256
+    ],
+    "cas": true
+  },
+  "normal_errors": [],
+  "passed": true
+}

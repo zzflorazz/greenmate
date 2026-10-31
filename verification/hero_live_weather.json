@@ -1,0 +1,20 @@
+{
+  "mode": "real_existing_weather_endpoint_and_webgl_isolated_db_no_llm_calls",
+  "before": {
+    "temperature": 30,
+    "humidity": 65,
+    "light": 12000,
+    "source_type": "SIMULATED",
+    "timestamp": "2026-10-30T13:56:08.795306+00:00"
+  },
+  "after": {
+    "temperature": 11.6,
+    "humidity": 34,
+    "light": 12000,
+    "source_type": "REAL_WEATHER",
+    "timestamp": "2026-10-30T13:56:14.008254+00:00"
+  },
+  "message": "已更新为真实户外天气。",
+  "passed": true,
+  "page_errors": []
+}

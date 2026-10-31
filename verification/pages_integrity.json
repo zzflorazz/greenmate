@@ -1,0 +1,16 @@
+{
+  "original_main_content_unchanged": true,
+  "protected_files_unchanged": {
+    "db.py": true,
+    "analysis.py": true,
+    "agent.py": true,
+    "tools.py": true,
+    "llm.py": true,
+    "ml_infer.py": true,
+    "ml_train.py": true,
+    "scenarios.py": true,
+    "models/attention_v1.joblib": true
+  },
+  "backend_tests": 119,
+  "ui_report": "pages_ui.json"
+}
