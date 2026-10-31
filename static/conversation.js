@@ -1,0 +1,16 @@
+(() => {
+'use strict';
+const {request,post,action,notice,badge,errorText}=window.GM;
+const nodes={};
+for(const id of ["conversation", "conversation-title", "mode-ask", "mode-agent", "ask-form", "question", "ask-button", "example-question", "ask-status", "answer-evidence", "answer", "agent-trace", "agent-trace-summary", "agent-tool-list", "chat-memory", "load-chat", "chat-status", "chat-history"]){const node=window.GM.$(id);if(!node)return;nodes[id]=node;}
+const $=id=>nodes[id];
+let mode='ask';
+function evidenceLabels(types){$('answer-evidence').replaceChildren(...[...new Set(types)].map(type=>badge(type,type==='MODEL_OUTPUT'?'model':'')));}
+function setMode(value){mode=value;$('mode-ask').setAttribute('aria-pressed',String(value==='ask'));$('mode-agent').setAttribute('aria-pressed',String(value==='agent'));$('ask-button').textContent=value==='ask'?'发送问题':'发送给 Agent';}
+$('mode-ask').onclick=()=>setMode('ask');$('mode-agent').onclick=()=>setMode('agent');
+$('example-question').onclick=()=>{setMode('agent');$('question').value='预测接下来一小时要不要关注，并结合北京天气、最近24小时历史和绿萝养护知识说明。请分别说明证据来源和不确定性。';$('question').focus();};
+function renderTrace(data){const calls=data.tool_calls||[];$('agent-trace').hidden=false;$('agent-trace-summary').textContent=`本次工具调用链：${calls.length} 次调用，${data.iterations||0} 轮`;$('agent-tool-list').replaceChildren();const labels=[];for(const call of calls){const item=document.createElement('li');const title=document.createElement('strong');title.className='tool-title';title.textContent=`${call.sequence}. ${call.tool} · ${call.status} · ${call.elapsed_ms} ms`;const args=document.createElement('pre');args.textContent='参数：'+JSON.stringify(call.arguments);const tag=call.result?.data?.evidence_type||call.result?.source||'UNKNOWN';labels.push(tag);const detail=document.createElement('details');const summary=document.createElement('summary');summary.textContent='参数与完整结果';const result=document.createElement('pre');result.textContent=JSON.stringify(call.result,null,2);detail.append(summary,result);item.append(title,badge(tag,tag==='MODEL_OUTPUT'?'model':''),args,detail);$('agent-tool-list').append(item);}if(!calls.length){const li=document.createElement('li');li.textContent='本次没有执行工具。';$('agent-tool-list').append(li);}evidenceLabels(labels);}
+$('ask-form').onsubmit=event=>{event.preventDefault();const question=$('question').value.trim();if(!question){notice('ask-status','请先填写问题。',true);return;}const selected=mode;action($('ask-button'),'ask-status',async()=>{$('answer').textContent='';$('agent-trace').hidden=true;evidenceLabels([]);try{const data=await post(selected==='ask'?'/api/ask':'/api/agent',{question});$('answer').textContent=data.answer;if(selected==='agent')renderTrace(data);else evidenceLabels([data.source_type,'STATE_CONTEXT']);notice('ask-status','回答已完成。');}catch(error){if(error.data){if(selected==='agent')renderTrace(error.data);$('answer').textContent=error.data.answer||'';}throw error;}});};
+$('load-chat').onclick=()=>action($('load-chat'),'chat-status',async()=>{const items=await request('/api/history');$('chat-history').replaceChildren(...items.map(item=>{const p=document.createElement('div');p.className='history-message';p.textContent=(item.role==='user'?'你：':'GreenMate：')+item.content;return p;}));notice('chat-status',`SQLite 中最近 ${items.length} 条问答。重启后仍保留。`);});
+
+})();

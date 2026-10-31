@@ -6,7 +6,7 @@ from typing import Literal
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException as StarletteHTTPException
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from openai import APITimeoutError, AuthenticationError, OpenAIError, RateLimitError
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -94,6 +94,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 scenario_lock = Lock()
 PAGE_PATH = Path(__file__).with_name("index.html")
+VENDOR_DIR = Path(__file__).with_name("vendor")
 METRICS_PATH = Path(__file__).with_name("ml_metrics.json")
 
 
@@ -156,6 +157,17 @@ def read_ml_prediction():
 @app.get("/", response_class=HTMLResponse)
 def root():
     return HTMLResponse(PAGE_PATH.read_text(encoding="utf-8"))
+
+
+@app.get("/vendor/{filename}", include_in_schema=False)
+def vendor_asset(filename: str):
+    # 首页三维场景所需的本地依赖，仅允许直接文件名，避免路径穿越。
+    if filename != Path(filename).name or not filename.endswith(".js"):
+        raise StarletteHTTPException(status_code=404, detail="未找到该资源。")
+    path = VENDOR_DIR / filename
+    if not path.is_file():
+        raise StarletteHTTPException(status_code=404, detail="未找到该资源。")
+    return FileResponse(path, media_type="application/javascript", headers={"Cache-Control": "public, max-age=86400"})
 
 
 @app.get("/api/state")
@@ -313,3 +325,26 @@ async def reload_knowledge():
         print(f"[rag] 向量索引重建失败：{type(error).__name__}。")
         return {"message": "知识库已重新加载；向量索引重建失败，检索不可用时将回退关键词。", "count": len(knowledge), "index_ready": False}
     return {"message": "知识库已重新加载并重建向量索引", "count": len(knowledge), "index_ready": True}
+
+
+# Presentation-only routes come last; all existing API routes remain unchanged.
+from fastapi.staticfiles import StaticFiles
+
+BASE = Path(__file__).parent
+app.mount('/static', StaticFiles(directory=BASE / 'static'), name='static')
+app.mount('/assets', StaticFiles(directory=BASE / 'assets'), name='assets')
+PAGES = {
+    'environment': 'environment.html',
+    'conversation': 'conversation.html',
+    'knowledge': 'knowledge.html',
+    'prediction': 'prediction.html',
+    'analysis': 'analysis.html',
+}
+
+
+@app.get('/{page}', include_in_schema=False, response_class=HTMLResponse)
+def page_view(page: str):
+    filename = PAGES.get(page)
+    if not filename:
+        raise StarletteHTTPException(status_code=404, detail='未找到该页面。')
+    return HTMLResponse((BASE / filename).read_text(encoding='utf-8'))
